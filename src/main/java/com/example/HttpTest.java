@@ -19,7 +19,7 @@ import com.example.utilisateur.Hebergeur;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class HttpTest {
 
 
