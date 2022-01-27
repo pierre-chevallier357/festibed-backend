@@ -20,7 +20,7 @@ import com.example.utilisateur.Hebergeur;
 @CrossOrigin
 @RestController
 @RequestMapping("/")
-public class HttpTest {
+public class Run {
 
 
     static Connection conn;
@@ -29,7 +29,7 @@ public class HttpTest {
     public Festivalier indexUser() {
      conn = TheConnection.getInstance();
 
-     DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
+      DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
       Festivalier festivalier = new Festivalier();
       festivalier = festivalierDAO.read(7);
       return festivalier;
