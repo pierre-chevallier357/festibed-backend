@@ -28,6 +28,7 @@ public class AppRequestFestivalier implements AppInterfaceUser {
             festivalier.setIdUser(id);
             listUserConnect.add(festivalier);
         }
+        Tools.connClose(conn);
         return id;
     }
 
@@ -36,7 +37,9 @@ public class AppRequestFestivalier implements AppInterfaceUser {
 
         conn = TheConnection.getInstance();
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
-        return festivalierDAO.read(id);
+        Festivalier festivalier = festivalierDAO.read(id);
+        Tools.connClose(conn);
+        return festivalier;
 
     }
 
@@ -45,7 +48,7 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         conn = TheConnection.getInstance();
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
         boolean res = festivalierDAO.update((Festivalier) user);
-
+        Tools.connClose(conn);
         return res;
     }
 
@@ -56,6 +59,7 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);       
         ArrayList<Festivalier> list =  ((FestivalierDAO) festivalierDAO).listFestivalier();
         ArrayList<Utilisateur> users = cast(list);
+        Tools.connClose(conn);
         return users;
     }
 

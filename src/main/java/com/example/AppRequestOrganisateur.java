@@ -29,6 +29,7 @@ public class AppRequestOrganisateur implements AppInterfaceUser{
             Organisateur.setIdUser(id);
             listUserConnect.add(Organisateur);
         }
+        Tools.connClose(conn);
         return id;
     }
 
@@ -37,8 +38,9 @@ public class AppRequestOrganisateur implements AppInterfaceUser{
         
         conn = TheConnection.getInstance();
         DAO<Organisateur> organisateurDAO = new OrganisateurDAO(conn);
-        return organisateurDAO.read(id);
-
+        Organisateur organisateur =  organisateurDAO.read(id);
+        Tools.connClose(conn);
+        return organisateur;
     }
     
     @Override
@@ -46,6 +48,7 @@ public class AppRequestOrganisateur implements AppInterfaceUser{
         conn = TheConnection.getInstance();
         DAO<Organisateur> organisateurDAO = new OrganisateurDAO(conn);
         boolean res = organisateurDAO.update((Organisateur) user);
+        Tools.connClose(conn);
 
         return res;
     }
@@ -57,6 +60,7 @@ public class AppRequestOrganisateur implements AppInterfaceUser{
         ArrayList<Organisateur> list =  ((OrganisateurDAO) organisateurDAO).listOrganisateur();
         
         ArrayList<Utilisateur> users = cast(list);
+        Tools.connClose(conn);
         return users;
     }
 

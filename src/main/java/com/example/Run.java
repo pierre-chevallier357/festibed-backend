@@ -32,6 +32,7 @@ public class Run {
       DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
       Festivalier festivalier = new Festivalier();
       festivalier = festivalierDAO.read(7);
+      Tools.connClose(conn);
       return festivalier;
     }
 
