@@ -1,6 +1,6 @@
 package com.example.etablissement;
 
-import com.example.Localisation;
+import com.example.other.Localisation;
 
 public class Etablissement {
 

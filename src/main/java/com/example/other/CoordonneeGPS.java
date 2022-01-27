@@ -1,4 +1,4 @@
-package com.example;
+package com.example.other;
 
 public class CoordonneeGPS {
 

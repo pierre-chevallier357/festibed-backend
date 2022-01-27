@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import com.example.Tools;
+
 import com.example.etablissement.*;
+import com.example.other.Tools;
 
 public class EtablissementDAO extends DAO<Etablissement> {
 

@@ -1,4 +1,4 @@
-/*package com.example;
+package com.example.other;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -88,8 +88,10 @@ public class Main {
 
         int id = ((FestivalierDAO) festivalierDAO).getIdFestivalier(festivalier.getEmail());
         //System.out.println("---------------------ID GENERER : "+id+" --------------------------");
-        
-        festivalier = festivalierDAO.read(id); 
+        */
+        DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
+        Festivalier festivalier = new Festivalier();
+        festivalier = festivalierDAO.read(7); 
         
         System.out.println(festivalier.getNom() +" Email : "+festivalier.getEmail());
         ArrayList<Festivalier> listFestivalier;
@@ -106,4 +108,4 @@ public class Main {
 			e.printStackTrace();
 		}
     }
-}*/
+}

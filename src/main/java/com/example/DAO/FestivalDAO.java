@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.example.Festival;
-import com.example.Tools;
+import com.example.other.Festival;
+import com.example.other.Tools;
 
 public class FestivalDAO extends DAO<Festival> {
 
