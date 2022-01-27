@@ -34,6 +34,15 @@ public class HttpTest {
       festivalier = festivalierDAO.read(7);
       return festivalier;
     }
+
+    @GetMapping("/test-get-user")
+    public Festivalier getUserTesting() {
+      Festivalier festivalier = new Festivalier();
+      festivalier.setEmail("blabla0gmail.com");
+      festivalier.setIdUser(1234);
+      festivalier.setNom("PierreLeBG");
+      return festivalier;
+    }
 /*
     @GetMapping("/create-Festivalier/{nom}&{email}")
     Integer createFestivalier(@PathVariable(value = "nom") String nom, @PathVariable(value = "email") String email) {
