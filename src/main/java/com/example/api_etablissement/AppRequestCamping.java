@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.example.DAO.DAO;
 import com.example.DAO.EtablissementDAO;
 import com.example.bdConnection.TheConnection;
+import com.example.etablissement.Camping;
 import com.example.etablissement.Etablissement;
 import com.example.other.Localisation;
 
@@ -60,7 +61,14 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
 
     @Override
     public ArrayList<Etablissement> getListOfEtablissement() {
-        // TODO Auto-generated method stub
+        
+        conn = TheConnection.getInstance();
+
+        DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
+        //ArrayList<Camping> list = ((CampingDAO) campingDAO).listCamping();
+
+
+
         return null;
     }
 
