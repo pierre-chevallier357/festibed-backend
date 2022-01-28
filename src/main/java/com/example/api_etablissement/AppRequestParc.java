@@ -58,9 +58,21 @@ public class AppRequestParc implements AppInterfaceEtablissement {
     }
 
     @Override
-    public ArrayList<Etablissement> getListOfEtablissement() {
-        // TODO Auto-generated method stub
-        return null;
+    public ArrayList<Etablissement> getListOfEtablissement(int idFestival) {
+        
+        conn = TheConnection.getInstance();
+        String parc = "parc";
+
+        DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
+        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, parc);
+        ArrayList<Etablissement> parcs = cast(list);
+
+        return parcs;
+    }
+
+    @SuppressWarnings("unchecked")
+    private ArrayList<Etablissement> cast(ArrayList<Etablissement> list) {
+        return (ArrayList<Etablissement>) list;
     }
     
 }

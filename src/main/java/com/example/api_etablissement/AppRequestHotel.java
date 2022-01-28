@@ -58,9 +58,21 @@ public class AppRequestHotel implements AppInterfaceEtablissement{
     }
 
     @Override
-    public ArrayList<Etablissement> getListOfEtablissement() {
-        // TODO Auto-generated method stub
-        return null;
+    public ArrayList<Etablissement> getListOfEtablissement(int idFestival) {
+        
+        conn = TheConnection.getInstance();
+        String hotel = "hotel";
+
+        DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
+        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, hotel);
+        ArrayList<Etablissement> hotels = cast(list);
+
+        return hotels;
+    }
+
+    @SuppressWarnings("unchecked")
+    private ArrayList<Etablissement> cast(ArrayList<Etablissement> list) {
+        return (ArrayList<Etablissement>) list;
     }
     
 }
