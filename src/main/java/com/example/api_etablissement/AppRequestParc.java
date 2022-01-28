@@ -9,7 +9,7 @@ import com.example.bdConnection.TheConnection;
 import com.example.etablissement.Etablissement;
 import com.example.other.Localisation;
 
-public class AppRequestHotel implements AppInterfaceEtablissement{
+public class AppRequestParc implements AppInterfaceEtablissement {
     static Connection conn;
 
     @Override
