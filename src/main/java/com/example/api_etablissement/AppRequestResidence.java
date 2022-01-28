@@ -9,8 +9,8 @@ import com.example.bdConnection.TheConnection;
 import com.example.etablissement.Etablissement;
 import com.example.other.Localisation;
 
-public class AppRequestCamping implements AppInterfaceEtablissement {
-
+public class AppRequestResidence implements AppInterfaceEtablissement {
+    
     static Connection conn;
 
     @Override
@@ -64,12 +64,18 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
     public ArrayList<Etablissement> getListOfEtablissement(int idFestival) {
         
         conn = TheConnection.getInstance();
-        String camping = "camping";
+        String residence = "residence";
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, camping);
+        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, residence);
+        ArrayList<Etablissement> residences = cast(list);
 
-        return list;
+        return residences;
+    }
+
+    @SuppressWarnings("unchecked")
+    private ArrayList<Etablissement> cast(ArrayList<Etablissement> list) {
+        return (ArrayList<Etablissement>) list;
     }
 
 }
