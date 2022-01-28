@@ -29,17 +29,17 @@ public class FestivalDAO extends DAO<Festival> {
 					);
 			
 			prepare.setString(1, obj.getNom());
-			prepare.setString(2, obj.getLocalisation().getRegion());
+			prepare.setString(2, obj.getRegion());
 			prepare.setString(3, obj.getDomaine());
 			prepare.setString(4,obj.getComplementDomaine());
 			prepare.setString(5, obj.getPeriodicite());
 			
 			prepare.setString(6,obj.getMoisDebut());
 			prepare.setString(7,obj.getSiteInternet());
-			prepare.setString(8,obj.getLocalisation().getCommune());
-			prepare.setInt(9,obj.getLocalisation().getCodePostal());
-			prepare.setString(10, obj.getLocalisation().getCoordonnesGPSString());
-			prepare.setString(11,obj.getLocalisation().getDepartement());
+			prepare.setString(8,obj.getCommune());
+			prepare.setInt(9,obj.getCodePostal());
+			prepare.setString(10, obj.getCoordonnesGPSString());
+			prepare.setString(11,obj.getDepartement());
 			prepare.setString(12,obj.getCommentaire());
 			prepare.setInt(13,obj.getDuree());
 			prepare.setInt(14,obj.getCapacite());

@@ -1,6 +1,5 @@
 package com.example.api_festival;
 
-import com.example.other.Localisation;
 
 public class Festival {
 
@@ -18,8 +17,14 @@ public class Festival {
     private String dateDebut;
     private String dateFin;
     private int duree;
-    private Localisation localisation;
     private int Capacite;
+    private int codePostal;
+    private String adresse;
+    private String departement;
+    private String region;
+    private String commune;
+    private double coordonnesGPSX;
+    private double coordonnesGPSY;
 
     public Festival(){}
 
@@ -29,14 +34,6 @@ public class Festival {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public Localisation getLocalisation() {
-        return this.localisation;
-    }
-
-    public void setLocalisation(Localisation localisation) {
-        this.localisation = localisation;
     }
 
     public String getDomaine() {
@@ -150,4 +147,56 @@ public class Festival {
 	public void setCapacite(int capacite) {
 		Capacite = capacite;
 	}  
+
+    public int getCodePostal() {
+        return this.codePostal;
+    }
+
+    public void setCodePostal(int codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public String getAdresse() {
+        return this.adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getDepartement() {
+        return this.departement;
+    }
+
+    public void setDepartement(String departement) {
+        this.departement = departement;
+    }
+
+    public String getRegion() {
+        return this.region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getCommune() {
+        return this.commune;
+    }
+
+    public void setCommune(String commune) {
+        this.commune = commune;
+    }
+
+    public void setCoordonnesGPS(String coordonnees) {
+        try{
+            String[] tab = coordonnees.split(",");
+            this.coordonnesGPSX = Double.parseDouble(tab[1]);;
+            this.coordonnesGPSY = Double.parseDouble(tab[2]);
+        }catch(Exception e){}
+    }
+
+    public String getCoordonnesGPSString() {
+        return this.coordonnesGPSX+","+this.coordonnesGPSY;
+    }
 }

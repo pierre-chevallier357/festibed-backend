@@ -8,8 +8,7 @@ import com.example.DAO.EtablissementDAO;
 import com.example.bdConnection.TheConnection;
 import com.example.etablissement.Etablissement;
 
-public class AppRequestResidence implements AppInterfaceEtablissement {
-    
+public class AppRequestEtablissement implements AppInterfaceEtablissement{
     static Connection conn;
 
     @Override
@@ -51,9 +50,31 @@ public class AppRequestResidence implements AppInterfaceEtablissement {
         conn = TheConnection.getInstance();
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtabByType(idFestival, "residence");
+        ArrayList<Etablissement> list;
+
+        switch (typeOfReach){
+
+            case 1 : 
+                list  = ((EtablissementDAO) etablissementDAO).listEtabByName(idFestival, type, option);
+                break;
+
+            case 2 :
+                list  = ((EtablissementDAO) etablissementDAO).listEtabByVille(idFestival, type, option);
+                break;
+
+            case 3 :
+                list  = ((EtablissementDAO) etablissementDAO).listEtabByType(idFestival, type);
+                break;
+
+            default :
+                list = new ArrayList<>();
+                break;
+
+        }
 
         return list;
     }
 
+
+    
 }

@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.example.api_festival.ToolsFestival;
 import com.example.etablissement.*;
 
 public class EtablissementDAO extends DAO<Etablissement> {
@@ -31,16 +30,16 @@ public class EtablissementDAO extends DAO<Etablissement> {
 			prepare.setString(1, obj.getType());
 			prepare.setString(2, obj.getClassement());
 			prepare.setString(3, obj.getNomCommercial());
-			prepare.setString(4,obj.getLocalisation().getAdresse());
-			prepare.setInt(5, obj.getLocalisation().getCodePostal());
-			prepare.setString(6,obj.getLocalisation().getCommune());
+			prepare.setString(4,obj.getAdresse());
+			prepare.setInt(5, obj.getCodePostal());
+			prepare.setString(6,obj.getCommune());
 			prepare.setString(7,obj.getNumeroDeTelephone());
 			prepare.setString(8,obj.getSiteInternet());
 			prepare.setInt(9,obj.getCapaciteDAccueil());
 			prepare.setInt(10, obj.getNbLogement());
-			prepare.setString(10,obj.getLocalisation().getCoordonnesGPSString());
-			prepare.setString(11,obj.getLocalisation().getDepartement());
-			prepare.setString(12,obj.getLocalisation().getRegion());
+			prepare.setString(10,obj.getCoordonnesGPSString());
+			prepare.setString(11,obj.getDepartement());
+			prepare.setString(12,obj.getRegion());
 
 			prepare.executeUpdate();
 
@@ -65,7 +64,7 @@ public class EtablissementDAO extends DAO<Etablissement> {
 				ResultSet rs = myStm.executeQuery(q);
 				while(rs.next()) {
 					String type = rs.getString("type");
-					etablissement = ToolsFestival.readEtablissementByType(rs, type);
+					etablissement = ToolsEtab.readEtablissementByType(rs, type);
 				}
 				
 			}
@@ -121,7 +120,27 @@ public class EtablissementDAO extends DAO<Etablissement> {
 		return res;
 	}
 	
-	public ArrayList<Etablissement> listEtab(int idFestival, String type) {	
+	public ArrayList<Etablissement> listEtabByName(int idFestival, String type, String name) {	
+		ArrayList<Etablissement> etabList = new ArrayList<>();
+		
+		try {
+			Statement myStm = this.connect.createStatement(this.type,this.mode);
+			String q = 	"SELECT * FROM ETABLISSEMENT WHERE NOMETAB = '"+name+"' and TYPE = '"+type+"'";//+"' and idFestival="+idFestival;
+			ResultSet rs = myStm.executeQuery(q);
+			while(rs.next()) {
+				
+				etabList.add(ToolsEtab.readEtablissementByType(rs, type));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return etabList;
+	
+	}
+
+
+	public ArrayList<Etablissement> listEtabByType(int idFestival, String type) {	
 		ArrayList<Etablissement> etabList = new ArrayList<>();
 		
 		try {
@@ -130,7 +149,27 @@ public class EtablissementDAO extends DAO<Etablissement> {
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				
-				etabList.add(ToolsFestival.readEtablissementByType(rs, type));
+				etabList.add(ToolsEtab.readEtablissementByType(rs, type));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return etabList;
+	
+	}
+
+
+	public ArrayList<Etablissement> listEtabByVille(int idFestival, String type, String ville) {	
+		ArrayList<Etablissement> etabList = new ArrayList<>();
+		
+		try {
+			Statement myStm = this.connect.createStatement(this.type,this.mode);
+			String q = 	"SELECT * FROM ETABLISSEMENT WHERE VILLE = '"+ville+"' and TYPE = '"+type+"'";//+"' and idFestival="+idFestival;
+			ResultSet rs = myStm.executeQuery(q);
+			while(rs.next()) {
+				
+				etabList.add(ToolsEtab.readEtablissementByType(rs, type));
 			}
 			
 		} catch (SQLException e) {

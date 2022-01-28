@@ -1,19 +1,24 @@
 package com.example.etablissement;
 
-import com.example.other.Localisation;
 
 public class Etablissement {
 
     private int IDEtab;
-    private TypeEtablissement type;
+    private String type;
     private Classement classement;
     private String nomCommercial;
     private String numeroDeTelephone;
     private String email;
     private String siteInternet;
-    private int capaciteDAccueil;
-    private Localisation localisation;
+    private int capaciteDAccueil;    
+    private int codePostal;
+    private String adresse;
+    private String departement;
+    private String region;
+    private String commune;
     private int nbLogement;
+    private double coordonnesGPSX;
+    private double coordonnesGPSY;
 
     public int getIDEtab() {
         return this.IDEtab;
@@ -37,14 +42,6 @@ public class Etablissement {
 
     public void setNomCommercial(String nomCommercial) {
         this.nomCommercial = nomCommercial;
-    }
-
-    public Localisation getLocalisation() {
-        return this.localisation;
-    }
-
-    public void setLocalisation(Localisation localisation) {
-        this.localisation = localisation;
     }
 
     public String getNumeroDeTelephone() {
@@ -80,11 +77,11 @@ public class Etablissement {
     }
 
     public void setType(String type) {
-        this.type.setTypeEtab(type);
+        this.type =type;
     }
 
     public String getType() {
-        return type.toString();
+        return type;
     }
     
     public void setNbLogement(int nbLogement) {
@@ -94,4 +91,56 @@ public class Etablissement {
 	public int getNbLogement() {
 		return nbLogement;
 	}
+
+    public int getCodePostal() {
+        return this.codePostal;
+    }
+
+    public void setCodePostal(int codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public String getAdresse() {
+        return this.adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getDepartement() {
+        return this.departement;
+    }
+
+    public void setDepartement(String departement) {
+        this.departement = departement;
+    }
+
+    public String getRegion() {
+        return this.region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getCommune() {
+        return this.commune;
+    }
+
+    public void setCommune(String commune) {
+        this.commune = commune;
+    }
+
+    public void setCoordonnesGPS(String coordonnees) {
+        try{
+            String[] tab = coordonnees.split(",");
+            this.coordonnesGPSX = Double.parseDouble(tab[1]);;
+            this.coordonnesGPSY = Double.parseDouble(tab[2]);
+        }catch(Exception e){}
+    }
+
+    public String getCoordonnesGPSString() {
+        return this.coordonnesGPSX+","+this.coordonnesGPSY;
+    }
 }
