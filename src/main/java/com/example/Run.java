@@ -32,6 +32,11 @@ public class Run {
     AppInterfaceUser requestUser;
     AppInterfaceFestival requestFestival = new AppRequestFestival();
 
+    @GetMapping("/")
+    public String index() {
+      return "ceci est le serveur";
+    }
+
     @GetMapping("/reach-festival-name/{nom}")
     public ArrayList<Festival> festivalReachByNom(@PathVariable(value = "nom") String nom) {
       return requestFestival.getListOfFestival(1, nom);
@@ -85,7 +90,7 @@ public class Run {
       return id;
     }
   
-    @GetMapping("/create-Hebergeur/{nom}&{email}")
+    @GetMapping("/create-Organisateur/{nom}&{email}")
     Integer createOrganisateur(@PathVariable(value = "nom") String nom, @PathVariable(value = "email") String email) {
       
       requestUser = new AppRequestOrganisateur();

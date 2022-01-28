@@ -62,7 +62,7 @@ public class Main {
         
         */
         DAO<Festival> festivalDAO = new FestivalDAO(conn);
-        ArrayList<Festival> listDomaine = ((FestivalDAO) festivalDAO).listFestivalReachByType("Musiques classiques");
+        ArrayList<Festival> listDomaine = ((FestivalDAO) festivalDAO).listFestivalReachByType("Mus?ques classiques");
     	
         for (Festival festi : listDomaine) {
             System.out.println(festi.getNom()); 
