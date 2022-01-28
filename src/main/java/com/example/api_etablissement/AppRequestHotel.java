@@ -65,14 +65,10 @@ public class AppRequestHotel implements AppInterfaceEtablissement{
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
         ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, hotel);
-        ArrayList<Etablissement> hotels = cast(list);
 
-        return hotels;
+        return list;
     }
 
-    @SuppressWarnings("unchecked")
-    private ArrayList<Etablissement> cast(ArrayList<Etablissement> list) {
-        return (ArrayList<Etablissement>) list;
-    }
+
     
 }

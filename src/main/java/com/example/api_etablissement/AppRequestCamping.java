@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import com.example.DAO.DAO;
 import com.example.DAO.EtablissementDAO;
 import com.example.bdConnection.TheConnection;
-import com.example.etablissement.Camping;
 import com.example.etablissement.Etablissement;
 import com.example.other.Localisation;
 
@@ -69,14 +68,8 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
         ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, camping);
-        ArrayList<Etablissement> campings = cast(list);
 
-        return campings;
-    }
-
-    @SuppressWarnings("unchecked")
-    private ArrayList<Etablissement> cast(ArrayList<Etablissement> list) {
-        return (ArrayList<Etablissement>) list;
+        return list;
     }
 
 }
