@@ -1,5 +1,6 @@
-package com.example.other;
+package com.example.api_festival;
 
+import com.example.other.Localisation;
 
 public class Festival {
 

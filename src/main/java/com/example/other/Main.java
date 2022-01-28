@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.example.DAO.*;
+import com.example.api_festival.Festival;
 import com.example.etablissement.*;
 import com.example.utilisateur.*;
 import com.example.bdConnection.*;
@@ -15,7 +16,8 @@ public class Main {
     public static void main(String args[]) {
         conn = TheConnection.getInstance();
 
-       /* DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
+       //FestivalDAO festivalDAO ;
+        /* DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
         ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(1, "H�TEL");
 
         for (Etablissement etab : list) {
@@ -58,14 +60,15 @@ public class Main {
 
         System.out.println("---------------------Le Festival de Musique Classique  --------------------------");
         
-        
-        ArrayList<Festival> listDomaine = ((FestivalDAO) festivalDAO).listFestivalReachByType("Musiques classiques");
+        */
+        DAO<Festival> festivalDAO = new FestivalDAO(conn);
+        ArrayList<Festival> listDomaine = ((FestivalDAO) festivalDAO).listFestivalReachByType("Mus?ques classiques");
     	
         for (Festival festi : listDomaine) {
             System.out.println(festi.getNom()); 
         }
         
-        
+       /*
         System.out.println("---------------------Le Festival de Musique Classique voir ces  domaines  --------------------------");
         
         
@@ -88,7 +91,7 @@ public class Main {
 
         int id = ((FestivalierDAO) festivalierDAO).getIdFestivalier(festivalier.getEmail());
         //System.out.println("---------------------ID GENERER : "+id+" --------------------------");
-        */
+        
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
         Festivalier festivalier = new Festivalier();
         festivalier = festivalierDAO.read(7); 
@@ -106,6 +109,6 @@ public class Main {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-		}
+		}*/
     }
 }

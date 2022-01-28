@@ -1,10 +1,10 @@
-package com.example.other;
+package com.example.api_festival;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.example.etablissement.Village;
-
+import com.example.other.Localisation;
 import com.example.etablissement.Camping;
 import com.example.etablissement.Etablissement;
 import com.example.etablissement.Hotel;
