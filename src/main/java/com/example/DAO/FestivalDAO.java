@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.example.api_festival.Festival;
-import com.example.api_festival.Tools;
+import com.example.api_festival.ToolsFestival;
 
 public class FestivalDAO extends DAO<Festival> {
 
@@ -65,7 +65,7 @@ public class FestivalDAO extends DAO<Festival> {
 				
 				ResultSet rs = myStm.executeQuery(q);
 				while(rs.next()) {
-					festival = Tools.readFestival(rs);
+					festival = ToolsFestival.readFestival(rs);
 				}
 				
 			}
@@ -126,7 +126,7 @@ public class FestivalDAO extends DAO<Festival> {
 			String q = 	"SELECT * FROM Festival WHERE VILLE = '"+ville+"'";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
-				festivalList.add(Tools.readFestivalInformation(rs));
+				festivalList.add(ToolsFestival.readFestivalInformation(rs));
 			}
 			
 		} catch (SQLException e) {
@@ -144,7 +144,7 @@ public class FestivalDAO extends DAO<Festival> {
 			String q = 	"SELECT * FROM Festival WHERE DEPARTEMENT = '"+departement+"'";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
-				festivalList.add(Tools.readFestivalInformation(rs));
+				festivalList.add(ToolsFestival.readFestivalInformation(rs));
 			}
 			
 		} catch (SQLException e) {
@@ -163,7 +163,7 @@ public class FestivalDAO extends DAO<Festival> {
 			String q = 	"SELECT * FROM Festival WHERE Domaine = '"+Domaine+"'";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
-				festivalList.add(Tools.readFestivalInformation(rs));
+				festivalList.add(ToolsFestival.readFestivalInformation(rs));
 			}
 			
 		} catch (SQLException e) {
@@ -206,7 +206,7 @@ public class FestivalDAO extends DAO<Festival> {
 			String q = 	"SELECT * FROM Festival WHERE Domaine = '"+type+"' and COMPLEMENT_DOMAINE = '"+complementOfType+"'";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
-				festivalList.add(Tools.readFestivalInformation(rs));
+				festivalList.add(ToolsFestival.readFestivalInformation(rs));
 			}
 			
 		} catch (SQLException e) {
@@ -223,7 +223,7 @@ public class FestivalDAO extends DAO<Festival> {
 			String q = 	"SELECT * FROM Festival WHERE nom = '"+nom+"'";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
-				festivalList.add(Tools.readFestivalInformation(rs));
+				festivalList.add(ToolsFestival.readFestivalInformation(rs));
 			}
 			
 		} catch (SQLException e) {

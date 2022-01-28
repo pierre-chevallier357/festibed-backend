@@ -11,7 +11,7 @@ import com.example.etablissement.Hotel;
 import com.example.etablissement.Parc;
 import com.example.etablissement.Residence;
 
-public abstract class Tools {
+public abstract class ToolsFestival {
 
 	
 	

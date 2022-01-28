@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.example.api_festival.Tools;
+import com.example.api_festival.ToolsFestival;
 import com.example.etablissement.*;
 
 public class EtablissementDAO extends DAO<Etablissement> {
@@ -65,7 +65,7 @@ public class EtablissementDAO extends DAO<Etablissement> {
 				ResultSet rs = myStm.executeQuery(q);
 				while(rs.next()) {
 					String type = rs.getString("type");
-					etablissement = Tools.readEtablissementByType(rs, type);
+					etablissement = ToolsFestival.readEtablissementByType(rs, type);
 				}
 				
 			}
@@ -130,7 +130,7 @@ public class EtablissementDAO extends DAO<Etablissement> {
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				
-				etabList.add(Tools.readEtablissementByType(rs, type));
+				etabList.add(ToolsFestival.readEtablissementByType(rs, type));
 			}
 			
 		} catch (SQLException e) {

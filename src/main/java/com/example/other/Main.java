@@ -9,6 +9,9 @@ import com.example.api_festival.AppInterfaceFestival;
 import com.example.api_festival.AppRequestFestival;
 import com.example.api_festival.Festival;
 import com.example.etablissement.*;
+import com.example.panier.AppInterfacePanier;
+import com.example.panier.AppRequestPanier;
+import com.example.panier.Produit;
 import com.example.utilisateur.*;
 import com.example.bdConnection.*;
 
@@ -62,7 +65,6 @@ public class Main {
 
         System.out.println("---------------------Le Festival de Musique Classique  --------------------------");
         
-        */
         DAO<Festival> festivalDAO = new FestivalDAO(conn);
         //ArrayList<Festival> listDomaine = ((FestivalDAO) festivalDAO).searchFestivalsByVille("REIMS");
         AppInterfaceFestival requestFestival = new AppRequestFestival();
@@ -71,6 +73,7 @@ public class Main {
         for (Festival festi : listDomaine) {
             System.out.println(festi.getNom()); 
         }
+        */
         
        /*
         System.out.println("---------------------Le Festival de Musique Classique voir ces  domaines  --------------------------");
@@ -115,6 +118,26 @@ public class Main {
 			e.printStackTrace();
 		}*/
 
+        AppInterfacePanier panier = new AppRequestPanier();
+
+        Produit produit = new Produit();
+        int idFestivalier = 1;
+        produit.setIdEtablissement(123);
+        produit.setIdFestival(124);
+        produit.setIdFestivalier(idFestivalier);
+        produit.setNbPass(2);
+        Integer id = panier.createPanier(idFestivalier, produit);
+        Produit produit2 = new Produit();
+        produit2.setIdEtablissement(1414141);
+        produit2.setIdFestival(55555);
+        produit2.setIdFestivalier(11111);
+        produit2.setNbPass(5);
+        panier.addProduct(id, produit2);
+        ArrayList<Produit> listProduit =  ((AppRequestPanier) panier).getProduct(id);
+        for(Produit produit3 : listProduit){
+            System.out.println(produit3.getIdFestivalier());
+        }
+        
 
 
     }

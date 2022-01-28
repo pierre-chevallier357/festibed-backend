@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.api_festival.AppInterfaceFestival;
 import com.example.api_festival.AppRequestFestival;
 import com.example.api_festival.Festival;
-import com.example.panier.Panier;
+import com.example.panier.AppInterfacePanier;
+import com.example.panier.AppRequestPanier;
 import com.example.panier.Produit;
 import com.example.utilisateur.AppInterfaceUser;
 import com.example.utilisateur.AppRequestFestivalier;
 import com.example.utilisateur.AppRequestHebergeur;
 import com.example.utilisateur.AppRequestOrganisateur;
 import com.example.utilisateur.Festivalier;
-import com.example.utilisateur.Hebergeur;
 
 @CrossOrigin
 @RestController
@@ -32,8 +32,8 @@ public class Run {
     static Connection conn;
     AppInterfaceUser requestUser;
     AppInterfaceFestival requestFestival = new AppRequestFestival();
+    AppInterfacePanier requestPanier = new AppRequestPanier();
     
-    ArrayList<Panier> listPanier = new ArrayList<>();
 
     @GetMapping("/")
     public String index() {
@@ -103,11 +103,14 @@ public class Run {
       return id;
     }
 
-    @GetMapping("/add-product/{idFestivalier}&{product}")
-    public boolean addProduct(@PathVariable(value = "idFestivalier") Integer idFestivalier, @PathVariable(value = "product") Produit produit) {
-      Panier panier = new Panier();
-      panier.factoryPanier(listPanier, idFestivalier);
-      panier.addProduct(produit);
+    @GetMapping("/first-product/{idFestivalier}&{product}")
+    public Integer firstProductCreatePanier(@PathVariable(value = "idFestivalier") Integer idFestivalier, @PathVariable(value = "product") Produit produit) {
+      return requestPanier.createPanier(idFestivalier, produit);
+    }
+
+    @GetMapping("/add-product/{idPanier}&{product}")
+    public boolean addProduct(@PathVariable(value = "idPanier") Integer idPanier, @PathVariable(value = "product") Produit produit) {
+      requestPanier.addProduct(idPanier, produit);
       return true;
     }
 
