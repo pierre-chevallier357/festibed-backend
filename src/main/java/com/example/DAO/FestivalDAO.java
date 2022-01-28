@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.example.other.Festival;
-import com.example.other.Tools;
+import com.example.api_festival.Festival;
+import com.example.api_festival.Tools;
 
 public class FestivalDAO extends DAO<Festival> {
 
@@ -171,5 +171,47 @@ public class FestivalDAO extends DAO<Festival> {
 		}
 		return festivalList;
 	
+	}
+
+	public Festival readIdByName(Festival festival) {	
+		Statement myStm;
+		
+		try {
+			String q = 	"SELECT IdFestival FROM Festival " +
+					"WHERE NOM= '"+festival.getNom()+"'";
+			myStm = this.connect.createStatement(this.type,this.mode);
+			
+			ResultSet rs = myStm.executeQuery(q);
+			while(rs.next()) {
+				festival.setIdFestival(rs.getInt("idFestival"));;
+			}
+			
+		}
+			
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return festival;
+}
+
+	public ArrayList<Festival> listFestivalReachByTypeAndComplement(String searchElement) {
+		ArrayList<Festival> festivalList = new ArrayList<>();
+		String[] tab = searchElement.split("&");
+        String type = tab[1];
+        String complementOfType = tab[2];
+
+		
+		try {
+			Statement myStm = this.connect.createStatement(this.type,this.mode);
+			String q = 	"SELECT * FROM Festival WHERE Domaine = '"+type+"' and COMPLEMENT_DOMAINE = '"+complementOfType+"'";
+			ResultSet rs = myStm.executeQuery(q);
+			while(rs.next()) {
+				festivalList.add(Tools.readFestivalInformation(rs));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return festivalList;
 	}
 }
