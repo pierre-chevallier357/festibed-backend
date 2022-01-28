@@ -5,6 +5,7 @@ public class Utilisateur {
     private String nom;
     private String email;
     private int idUser;
+    
 
     public String getNom() {
         return this.nom;

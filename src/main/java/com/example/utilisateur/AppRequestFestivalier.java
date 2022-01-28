@@ -1,4 +1,4 @@
-package com.example;
+package com.example.utilisateur;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import com.example.DAO.DAO;
 import com.example.DAO.FestivalierDAO;
 import com.example.bdConnection.TheConnection;
-import com.example.utilisateur.Festivalier;
-import com.example.utilisateur.Utilisateur;
 
 public class AppRequestFestivalier implements AppInterfaceUser {
 
@@ -22,9 +20,7 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         festivalier.setNom(nom);
         festivalier.setEmail(email);
         if(festivalierDAO.create(festivalier)){
-
             id =  ((FestivalierDAO) festivalierDAO).getIdFestivalier(festivalier.getEmail());
-            
             festivalier.setIdUser(id);
             listUserConnect.add(festivalier);
         }
@@ -46,6 +42,13 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
         boolean res = festivalierDAO.update((Festivalier) user); 
         return res;
+    }
+
+    @Override
+    public Integer connection(String email, String password){
+        DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
+        Integer id =((FestivalierDAO) festivalierDAO).find(email, password);
+        return id;
     }
 
     @Override

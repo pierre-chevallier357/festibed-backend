@@ -1,4 +1,4 @@
-package com.example;
+package com.example.utilisateur;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import com.example.DAO.DAO;
 import com.example.DAO.HebergeurDAO;
 import com.example.bdConnection.TheConnection;
-import com.example.utilisateur.Hebergeur;
-import com.example.utilisateur.Utilisateur;
 
 public class AppRequestHebergeur implements AppInterfaceUser{
     
@@ -28,6 +26,13 @@ public class AppRequestHebergeur implements AppInterfaceUser{
             hebergeur.setIdUser(id);
             listUserConnect.add(hebergeur);
         }
+        return id;
+    }
+
+    @Override
+    public Integer connection(String email, String password){
+        DAO<Hebergeur> hebergeurDAO = new HebergeurDAO(conn);
+        Integer id =((HebergeurDAO) hebergeurDAO).find(email, password);
         return id;
     }
 
@@ -57,6 +62,8 @@ public class AppRequestHebergeur implements AppInterfaceUser{
         ArrayList<Utilisateur> users = cast(list);
         return users;
     }
+
+
 
 
     @SuppressWarnings("unchecked")

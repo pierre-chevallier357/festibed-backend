@@ -118,7 +118,7 @@ public class FestivalDAO extends DAO<Festival> {
 		return del > 0;
 	}
 	
-	public ArrayList<Festival> listFestivalReachByVille(String ville) {	
+	public ArrayList<Festival> searchFestivalsByVille(String ville) {	
 		ArrayList<Festival> festivalList = new ArrayList<>();
 		
 		try {
@@ -136,7 +136,7 @@ public class FestivalDAO extends DAO<Festival> {
 	
 	}
 	
-	public ArrayList<Festival> listFestivalReachByDepartement(String departement) {	
+	public ArrayList<Festival> searchFestivalsByDepartement(String departement) {	
 		ArrayList<Festival> festivalList = new ArrayList<>();
 		
 		try {
@@ -155,7 +155,7 @@ public class FestivalDAO extends DAO<Festival> {
 	}
 	
 	
-	public ArrayList<Festival> listFestivalReachByType(String Domaine) {	
+	public ArrayList<Festival> searchFestivalsByType(String Domaine) {	
 		ArrayList<Festival> festivalList = new ArrayList<>();
 		
 		try {
@@ -194,7 +194,7 @@ public class FestivalDAO extends DAO<Festival> {
 		return festival;
 }
 
-	public ArrayList<Festival> listFestivalReachByTypeAndComplement(String searchElement) {
+	public ArrayList<Festival> searchFestivalsByTypeAndComplement(String searchElement) {
 		ArrayList<Festival> festivalList = new ArrayList<>();
 		String[] tab = searchElement.split("&");
         String type = tab[1];

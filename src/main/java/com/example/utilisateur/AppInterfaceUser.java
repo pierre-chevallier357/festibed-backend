@@ -1,7 +1,5 @@
-package com.example;
+package com.example.utilisateur;
 import java.util.ArrayList;
-
-import com.example.utilisateur.Utilisateur;
 
 public interface AppInterfaceUser {
     
@@ -15,5 +13,7 @@ public interface AppInterfaceUser {
     public boolean updateUser(Utilisateur user);
 
     public ArrayList<Utilisateur> getListOfUser();
+
+    public Integer connection(String email, String password);
     
 }
