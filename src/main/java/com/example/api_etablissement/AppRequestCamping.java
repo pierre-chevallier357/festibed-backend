@@ -60,16 +60,21 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
     }
 
     @Override
-    public ArrayList<Etablissement> getListOfEtablissement() {
+    public ArrayList<Etablissement> getListOfEtablissement(int idFestival) {
         
         conn = TheConnection.getInstance();
+        String camping = "camping";
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        //ArrayList<Camping> list = ((CampingDAO) campingDAO).listCamping();
+        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, camping);
+        ArrayList<Etablissement> etablissements = cast(list);
 
+        return etablissements;
+    }
 
-
-        return null;
+    @SuppressWarnings("unchecked")
+    private ArrayList<Etablissement> cast(ArrayList<Etablissement> list) {
+        return (ArrayList<Etablissement>) list;
     }
 
 }
