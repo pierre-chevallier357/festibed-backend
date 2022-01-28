@@ -150,5 +150,27 @@ public class OrganisateurDAO extends DAO<Organisateur> {
 		return HebergList;
 	
 	}
+
+	public Integer find(String email, String password) {
+			
+		Integer id = null;
+
+		try {
+			Statement myStm = this.connect.createStatement(this.type,this.mode);
+			String q = 	"SELECT idOrganisateur FROM Organisateur " +
+						"WHERE email= '"+email+"' and password= '"+password+"'";
+			
+			ResultSet rs = myStm.executeQuery(q);
+			
+			if (rs.first()) {
+				id = rs.getInt("idOrganisateur");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return id;
+	}
     
 }

@@ -15,5 +15,7 @@ public interface AppInterfaceUser {
     public boolean updateUser(Utilisateur user);
 
     public ArrayList<Utilisateur> getListOfUser();
+
+    public Integer connection(String email, String password);
     
 }

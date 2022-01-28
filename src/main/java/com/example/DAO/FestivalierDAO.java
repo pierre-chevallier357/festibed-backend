@@ -149,5 +149,27 @@ public class FestivalierDAO extends DAO<Festivalier> {
 		return festiList;
 	
 	}
+
+	public Integer find(String email, String password) {
+			
+		Integer id = null;
+
+		try {
+			Statement myStm = this.connect.createStatement(this.type,this.mode);
+			String q = 	"SELECT idFestivalier FROM Festivalier " +
+						"WHERE email= '"+email+"' and password= '"+password+"'";
+			
+			ResultSet rs = myStm.executeQuery(q);
+			
+			if (rs.first()) {
+				id = rs.getInt("idFestivalier");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return id;
+	}
     
 }

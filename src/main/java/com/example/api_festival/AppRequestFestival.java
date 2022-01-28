@@ -43,23 +43,23 @@ public class AppRequestFestival implements AppInterfaceFestival{
         switch (typeOfReach){
 
             case 1 : 
-                list  = ((FestivalDAO) festivalDAO).listFestivalReachByVille(searchElement);
+                list  = ((FestivalDAO) festivalDAO).searchFestivalsByVille(searchElement);
                 break;
 
             case 2 :
-                list  = ((FestivalDAO) festivalDAO).listFestivalReachByVille(searchElement);
+                list  = ((FestivalDAO) festivalDAO).searchFestivalsByVille(searchElement);
                 break;
 
             case 3 :
-                list  = ((FestivalDAO) festivalDAO).listFestivalReachByDepartement(searchElement);
+                list  = ((FestivalDAO) festivalDAO).searchFestivalsByDepartement(searchElement);
                 break;
 
             case 4 :
-                list  = ((FestivalDAO) festivalDAO).listFestivalReachByType(searchElement);
+                list  = ((FestivalDAO) festivalDAO).searchFestivalsByType(searchElement);
                 break;
             
             case 5 :
-                list  = ((FestivalDAO) festivalDAO).listFestivalReachByTypeAndComplement(searchElement);
+                list  = ((FestivalDAO) festivalDAO).searchFestivalsByTypeAndComplement(searchElement);
                 break;
             default :
                 list = new ArrayList<>();

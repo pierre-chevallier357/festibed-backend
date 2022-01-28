@@ -22,9 +22,7 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         festivalier.setNom(nom);
         festivalier.setEmail(email);
         if(festivalierDAO.create(festivalier)){
-
             id =  ((FestivalierDAO) festivalierDAO).getIdFestivalier(festivalier.getEmail());
-            
             festivalier.setIdUser(id);
             listUserConnect.add(festivalier);
         }
@@ -46,6 +44,13 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
         boolean res = festivalierDAO.update((Festivalier) user); 
         return res;
+    }
+
+    @Override
+    public Integer connection(String email, String password){
+        DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
+        Integer id =((FestivalierDAO) festivalierDAO).find(email, password);
+        return id;
     }
 
     @Override

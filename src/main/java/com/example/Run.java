@@ -11,14 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.DAO.DAO;
-import com.example.DAO.FestivalDAO;
-import com.example.DAO.FestivalierDAO;
-import com.example.DAO.HebergeurDAO;
 import com.example.api_festival.AppInterfaceFestival;
 import com.example.api_festival.AppRequestFestival;
 import com.example.api_festival.Festival;
-import com.example.bdConnection.TheConnection;
 import com.example.utilisateur.Festivalier;
 import com.example.utilisateur.Hebergeur;
 

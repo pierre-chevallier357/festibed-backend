@@ -32,6 +32,13 @@ public class AppRequestHebergeur implements AppInterfaceUser{
     }
 
     @Override
+    public Integer connection(String email, String password){
+        DAO<Hebergeur> hebergeurDAO = new HebergeurDAO(conn);
+        Integer id =((HebergeurDAO) hebergeurDAO).find(email, password);
+        return id;
+    }
+
+    @Override
     public Hebergeur getUser(int id){
         
         conn = TheConnection.getInstance();
@@ -57,6 +64,8 @@ public class AppRequestHebergeur implements AppInterfaceUser{
         ArrayList<Utilisateur> users = cast(list);
         return users;
     }
+
+
 
 
     @SuppressWarnings("unchecked")

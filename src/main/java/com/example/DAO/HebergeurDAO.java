@@ -149,5 +149,27 @@ public class HebergeurDAO extends DAO<Hebergeur> {
 		return HebergList;
 	
 	}
+
+	public Integer find(String email, String password) {
+			
+		Integer id = null;
+
+		try {
+			Statement myStm = this.connect.createStatement(this.type,this.mode);
+			String q = 	"SELECT idHebergeur FROM Hebergeur " +
+						"WHERE email= '"+email+"' and password= '"+password+"'";
+			
+			ResultSet rs = myStm.executeQuery(q);
+			
+			if (rs.first()) {
+				id = rs.getInt("idHebergeur");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return id;
+	}
     
 }

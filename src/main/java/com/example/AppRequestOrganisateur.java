@@ -60,6 +60,13 @@ public class AppRequestOrganisateur implements AppInterfaceUser{
         return users;
     }
 
+    @Override
+    public Integer connection(String email, String password){
+        DAO<Organisateur> organisateurDAO = new OrganisateurDAO(conn);
+        Integer id =((OrganisateurDAO) organisateurDAO).find(email, password);
+        return id;
+    }
+
 
     @SuppressWarnings("unchecked")
     public static <T> ArrayList<Utilisateur> cast(ArrayList<T> list) {
