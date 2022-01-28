@@ -65,14 +65,8 @@ public class AppRequestParc implements AppInterfaceEtablissement {
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
         ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, parc);
-        ArrayList<Etablissement> parcs = cast(list);
 
-        return parcs;
-    }
-
-    @SuppressWarnings("unchecked")
-    private ArrayList<Etablissement> cast(ArrayList<Etablissement> list) {
-        return (ArrayList<Etablissement>) list;
+        return list;
     }
     
 }
