@@ -15,8 +15,10 @@ import com.example.DAO.DAO;
 import com.example.DAO.FestivalDAO;
 import com.example.DAO.FestivalierDAO;
 import com.example.DAO.HebergeurDAO;
+import com.example.api_festival.AppInterfaceFestival;
+import com.example.api_festival.AppRequestFestival;
+import com.example.api_festival.Festival;
 import com.example.bdConnection.TheConnection;
-import com.example.other.Festival;
 import com.example.utilisateur.Festivalier;
 import com.example.utilisateur.Hebergeur;
 
@@ -28,37 +30,34 @@ public class Run {
 
     static Connection conn;
     AppInterfaceUser requestUser;
+    AppInterfaceFestival requestFestival = new AppRequestFestival();
+
+    @GetMapping("/reach-festival-name/{nom}")
+    public ArrayList<Festival> festivalReachByNom(@PathVariable(value = "nom") String nom) {
+      return requestFestival.getListOfFestival(1, nom);
+    }
     
     @GetMapping("/reach-festival-ville/{ville}")
     public ArrayList<Festival> festivalReachByVille(@PathVariable(value = "ville") String ville) {
-      conn = TheConnection.getInstance();
-
-      DAO<Festival> festivalDAO = new FestivalDAO(conn);
-      ArrayList<Festival> festivalier = new ArrayList<>();
-      festivalier = ((FestivalDAO) festivalDAO).listFestivalReachByVille(ville);
-      return festivalier;
-    }
-
-    @GetMapping("/reach-festival-type/{type}")
-    public ArrayList<Festival> festivalReachByType(@PathVariable(value = "type") String type) {
-      conn = TheConnection.getInstance();
-
-      DAO<Festival> festivalDAO = new FestivalDAO(conn);
-      ArrayList<Festival> festivalier = new ArrayList<>();
-      festivalier = ((FestivalDAO) festivalDAO).listFestivalReachByType("type");
-      Tools.connClose(conn);
-      return festivalier;
+      return requestFestival.getListOfFestival(2, ville);
     }
 
     @GetMapping("/reach-festival-type/{departement}")
     public ArrayList<Festival> festivalReachByDepartement(@PathVariable(value = "departement") String departement) {
-      conn = TheConnection.getInstance();
-
-      DAO<Festival> festivalDAO = new FestivalDAO(conn);
-      ArrayList<Festival> festivalier = new ArrayList<>();
-      festivalier = ((FestivalDAO) festivalDAO).listFestivalReachByDepartement(departement);
-      return festivalier;
+      return requestFestival.getListOfFestival(3, departement);
     }
+
+    @GetMapping("/reach-festival-type/{type}")
+    public ArrayList<Festival> festivalReachByType(@PathVariable(value = "type") String type) {
+      return requestFestival.getListOfFestival(4, type);
+    }
+
+    @GetMapping("/reach-festival-type-complement/{type}")
+    public ArrayList<Festival> festivalReachByTypeAndComplement(@PathVariable(value = "type") String type) {
+      return requestFestival.getListOfFestival(5, type);
+    }
+
+
 
     @GetMapping("/test-get-user")
     public Festivalier getUserTesting() {
