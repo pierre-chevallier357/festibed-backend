@@ -62,7 +62,7 @@ public class Main {
         
         */
         DAO<Festival> festivalDAO = new FestivalDAO(conn);
-        ArrayList<Festival> listDomaine = ((FestivalDAO) festivalDAO).searchFestivalsByType("Mus?ques classiques");
+        ArrayList<Festival> listDomaine = ((FestivalDAO) festivalDAO).searchFestivalsByName("Festival de Saint-Denis");
     	
         for (Festival festi : listDomaine) {
             System.out.println(festi.getNom()); 
@@ -110,5 +110,11 @@ public class Main {
 			
 			e.printStackTrace();
 		}*/
+
+
+
     }
+
+
+
 }

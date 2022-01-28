@@ -60,7 +60,7 @@ public class Run {
       return requestFestival.getListOfFestival(4, type);
     }
 
-    @GetMapping("/reach-festival-type-complement/{type}")
+    @GetMapping("/reach-festival-type-complement/{type}&{complement}")
     public ArrayList<Festival> festivalReachByTypeAndComplement(@PathVariable(value = "type") String type) {
       return requestFestival.getListOfFestival(5, type);
     }

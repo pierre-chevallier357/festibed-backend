@@ -214,4 +214,21 @@ public class FestivalDAO extends DAO<Festival> {
 		}
 		return festivalList;
 	}
+
+    public ArrayList<Festival> searchFestivalsByName(String nom) {		
+		ArrayList<Festival> festivalList = new ArrayList<>();
+		
+		try {
+			Statement myStm = this.connect.createStatement(this.type,this.mode);
+			String q = 	"SELECT * FROM Festival WHERE nom = '"+nom+"'";
+			ResultSet rs = myStm.executeQuery(q);
+			while(rs.next()) {
+				festivalList.add(Tools.readFestivalInformation(rs));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return festivalList;
+    }
 }
