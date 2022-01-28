@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import com.example.DAO.DAO;
 import com.example.DAO.EtablissementDAO;
 import com.example.bdConnection.TheConnection;
-import com.example.etablissement.Camping;
 import com.example.etablissement.Etablissement;
 import com.example.other.Localisation;
 
