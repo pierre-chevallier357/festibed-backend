@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.api_festival.AppInterfaceFestival;
 import com.example.api_festival.AppRequestFestival;
 import com.example.api_festival.Festival;
+import com.example.panier.Panier;
+import com.example.panier.Produit;
 import com.example.utilisateur.AppInterfaceUser;
 import com.example.utilisateur.AppRequestFestivalier;
 import com.example.utilisateur.AppRequestHebergeur;
@@ -30,6 +32,8 @@ public class Run {
     static Connection conn;
     AppInterfaceUser requestUser;
     AppInterfaceFestival requestFestival = new AppRequestFestival();
+    
+    ArrayList<Panier> listPanier = new ArrayList<>();
 
     @GetMapping("/")
     public String index() {
@@ -73,6 +77,7 @@ public class Run {
     }
 
 
+
     @GetMapping("/create-Festivalier/{nom}&{email}")
     Integer createFestivalier(@PathVariable(value = "nom") String nom, @PathVariable(value = "email") String email) {
       requestUser = new AppRequestFestivalier();
@@ -95,6 +100,14 @@ public class Run {
       requestUser = new AppRequestOrganisateur();
       int id = requestUser.createUser(nom, email);      
       return id;
+    }
+
+    @GetMapping("/add-product/{idFestivalier}&{product}")
+    public boolean addProduct(@PathVariable(value = "idFestivalier") Integer idFestivalier, @PathVariable(value = "product") Produit produit) {
+      Panier panier = new Panier();
+      panier.factoryPanier(listPanier, idFestivalier);
+      panier.addProduct(produit);
+      return true;
     }
 
     @GetMapping("/connection-close")
