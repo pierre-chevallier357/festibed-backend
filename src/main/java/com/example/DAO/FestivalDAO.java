@@ -126,7 +126,7 @@ public class FestivalDAO extends DAO<Festival> {
 			String q = 	"SELECT * FROM Festival WHERE VILLE = '"+ville+"'";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
-				festivalList.add(Tools.readFestival(rs));
+				festivalList.add(Tools.readFestivalInformation(rs));
 			}
 			
 		} catch (SQLException e) {
@@ -144,7 +144,7 @@ public class FestivalDAO extends DAO<Festival> {
 			String q = 	"SELECT * FROM Festival WHERE DEPARTEMENT = '"+departement+"'";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
-				festivalList.add(Tools.readFestival(rs));
+				festivalList.add(Tools.readFestivalInformation(rs));
 			}
 			
 		} catch (SQLException e) {
@@ -163,7 +163,7 @@ public class FestivalDAO extends DAO<Festival> {
 			String q = 	"SELECT * FROM Festival WHERE Domaine = '"+Domaine+"'";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
-				festivalList.add(Tools.readFestival(rs));
+				festivalList.add(Tools.readFestivalInformation(rs));
 			}
 			
 		} catch (SQLException e) {

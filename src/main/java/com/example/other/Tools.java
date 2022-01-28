@@ -158,7 +158,35 @@ public abstract class Tools {
 		return etablissement;
 	}
 
-	
+	public static Festival readFestivalInformation(ResultSet rs){
+		Festival festival = new Festival();
+		Localisation localisation = new Localisation();
+		try{
+			festival.setNom(rs.getString("Nom"));
+			festival.setDomaine(rs.getString("Domaine"));
+			try{
+				festival.setComplementDomaine(rs.getString("Complement_Domaine"));
+			}catch(SQLException e){
+				festival.setComplementDomaine("");
+			}
+			festival.setMoisIndicatif(rs.getString("MoisIndicatif"));
+			festival.setDuree(rs.getInt("Duree"));
+			festival.setIdFestival(rs.getInt("IDFestival"));
+			try{
+				localisation.setCommune(rs.getString("ville"));
+			}catch(SQLException e){
+				localisation.setCommune("Ville inconnue");
+			}
+			try{
+				localisation.setDepartement(rs.getString("departement"));
+			}catch(SQLException e){
+				localisation.setDepartement("Departement inconnu");
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return festival;
+	}
 	public static Festival readFestival(ResultSet rs) {
 		
 		Festival festival = new Festival();
@@ -172,11 +200,33 @@ public abstract class Tools {
 			festival.setDuree(rs.getInt("Duree"));
 			festival.setIdFestival(rs.getInt("IDFestival"));
 			
-			localisation.setCodePostal(rs.getInt("codePostal"));
-			localisation.setCommune(rs.getString("ville"));
-			localisation.setCoordonnesGPS(rs.getString("coordonnees"));
-			localisation.setDepartement(rs.getString("departement"));
-			localisation.setRegion(rs.getString("region"));
+			try{
+				localisation.setCodePostal(rs.getInt("codePostal"));
+			}catch(SQLException e){
+				localisation.setCodePostal(-1);
+			}
+			try{
+				localisation.setCommune(rs.getString("ville"));
+			}catch(SQLException e){
+				localisation.setCommune("Ville inconnue");
+			}
+			try{
+				localisation.setCoordonnesGPS(rs.getString("coordonnees"));
+			}catch(SQLException e){
+				localisation.setCoordonnesGPS("Coordonnee inconnue");
+			}			
+			try{
+				localisation.setDepartement(rs.getString("departement"));
+			}catch(SQLException e){
+				localisation.setDepartement("Departement inconnu");
+			}
+			
+			try{
+				localisation.setRegion(rs.getString("region"));
+			}catch(SQLException e){
+				localisation.setRegion("region inconnue");
+			}
+			
 			
 			festival.setLocalisation(localisation);
 			
