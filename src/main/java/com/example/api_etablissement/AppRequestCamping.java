@@ -16,7 +16,9 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
     @Override
     public int createEtablissement(int idEtablissement, String classement, String nom, Localisation localisation,
             String numeroDeTelephone, String email, String siteInternet, int capacite, String type, int nbLogement) {
+
         conn = TheConnection.getInstance();
+
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
         Etablissement etablissement = new Etablissement();
         int id = -1;
@@ -42,8 +44,12 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
 
     @Override
     public Etablissement getEtablissement(int id) {
-        // TODO Auto-generated method stub
-        return null;
+        conn = TheConnection.getInstance();
+
+        DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
+        Etablissement etablissement = etablissementDAO.read(id);
+
+        return etablissement;
     }
 
     @Override
