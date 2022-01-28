@@ -31,10 +31,13 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
         etablissement.setNbLogement(nbLogement);
         if (etablissementDAO.create(etablissement)) {
 
-            id = 
+            id = ((EtablissementDAO) etablissementDAO).getIdEtablissement(email);
+
+            etablissement.setIDEtab(id);
+            listEtablissementConnect.add(etablissement);
 
         }
-        return 0;
+        return id;
     }
 
     @Override

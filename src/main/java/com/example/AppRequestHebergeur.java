@@ -28,7 +28,6 @@ public class AppRequestHebergeur implements AppInterfaceUser{
             hebergeur.setIdUser(id);
             listUserConnect.add(hebergeur);
         }
-        Tools.connClose(conn);
         return id;
     }
 
@@ -38,7 +37,6 @@ public class AppRequestHebergeur implements AppInterfaceUser{
         conn = TheConnection.getInstance();
         DAO<Hebergeur> hebergeurDAO = new HebergeurDAO(conn);
         Hebergeur hebergeur =  hebergeurDAO.read(id);
-        Tools.connClose(conn);
         return hebergeur;
         
     }
@@ -48,7 +46,6 @@ public class AppRequestHebergeur implements AppInterfaceUser{
         conn = TheConnection.getInstance();
         DAO<Hebergeur> hebergementrDAO = new HebergeurDAO(conn);
         boolean res = hebergementrDAO.update((Hebergeur) user);
-        Tools.connClose(conn);
         return res;
     }
 
@@ -57,9 +54,7 @@ public class AppRequestHebergeur implements AppInterfaceUser{
         conn = TheConnection.getInstance();
         DAO<Hebergeur> hebergementrDAO = new HebergeurDAO(conn);
         ArrayList<Hebergeur> list =  ((HebergeurDAO) hebergementrDAO).listHebergeur();
-        
         ArrayList<Utilisateur> users = cast(list);
-        Tools.connClose(conn);
         return users;
     }
 
