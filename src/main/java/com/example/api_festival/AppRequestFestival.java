@@ -43,7 +43,7 @@ public class AppRequestFestival implements AppInterfaceFestival{
         switch (typeOfReach){
 
             case 1 : 
-                list  = ((FestivalDAO) festivalDAO).searchFestivalsByVille(searchElement);
+                list  = ((FestivalDAO) festivalDAO).searchFestivalsByName(searchElement);
                 break;
 
             case 2 :

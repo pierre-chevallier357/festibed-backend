@@ -66,7 +66,7 @@ public class Main {
         DAO<Festival> festivalDAO = new FestivalDAO(conn);
         //ArrayList<Festival> listDomaine = ((FestivalDAO) festivalDAO).searchFestivalsByVille("REIMS");
         AppInterfaceFestival requestFestival = new AppRequestFestival();
-        ArrayList<Festival> listDomaine = requestFestival.getListOfFestival(2,"REIMS");
+        ArrayList<Festival> listDomaine = requestFestival.getListOfFestival(1,"AU COEUR DE COSNE");
     	
         for (Festival festi : listDomaine) {
             System.out.println(festi.getNom()); 
