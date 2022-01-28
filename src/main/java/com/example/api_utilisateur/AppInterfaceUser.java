@@ -1,5 +1,7 @@
-package com.example.utilisateur;
+package com.example.api_utilisateur;
 import java.util.ArrayList;
+
+import com.example.utilisateur.Utilisateur;
 
 public interface AppInterfaceUser {
     
