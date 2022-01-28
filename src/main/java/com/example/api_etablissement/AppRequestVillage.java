@@ -36,7 +36,6 @@ public class AppRequestVillage implements AppInterfaceEtablissement {
             id = ((EtablissementDAO) etablissementDAO).getIdEtablissement(email);
 
             etablissement.setIDEtab(id);
-            listEtablissementConnect.add(etablissement);
 
         }
         return id;
@@ -64,18 +63,11 @@ public class AppRequestVillage implements AppInterfaceEtablissement {
     public ArrayList<Etablissement> getListOfEtablissement(int idFestival) {
         
         conn = TheConnection.getInstance();
-        String village = "village";
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, village);
-        ArrayList<Etablissement> villages = cast(list);
+        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, "village");
 
-        return villages;
-    }
-
-    @SuppressWarnings("unchecked")
-    private ArrayList<Etablissement> cast(ArrayList<Etablissement> list) {
-        return (ArrayList<Etablissement>) list;
-    }
+        return list;
+        }
     
 }

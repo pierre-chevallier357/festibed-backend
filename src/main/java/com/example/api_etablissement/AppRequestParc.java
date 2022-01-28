@@ -33,7 +33,6 @@ public class AppRequestParc implements AppInterfaceEtablissement {
             id = ((EtablissementDAO) etablissementDAO).getIdEtablissement(email);
 
             etablissement.setIDEtab(id);
-            listEtablissementConnect.add(etablissement);
 
         }
         return id;
@@ -61,10 +60,10 @@ public class AppRequestParc implements AppInterfaceEtablissement {
     public ArrayList<Etablissement> getListOfEtablissement(int idFestival) {
         
         conn = TheConnection.getInstance();
-        String parc = "parc";
+       
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, parc);
+        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, "parc");
 
         return list;
     }

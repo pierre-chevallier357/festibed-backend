@@ -36,7 +36,6 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
             id = ((EtablissementDAO) etablissementDAO).getIdEtablissement(email);
 
             etablissement.setIDEtab(id);
-            listEtablissementConnect.add(etablissement);
 
         }
         return id;
@@ -64,10 +63,9 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
     public ArrayList<Etablissement> getListOfEtablissement(int idFestival) {
         
         conn = TheConnection.getInstance();
-        String camping = "camping";
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, camping);
+        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, "camping");
 
         return list;
     }
