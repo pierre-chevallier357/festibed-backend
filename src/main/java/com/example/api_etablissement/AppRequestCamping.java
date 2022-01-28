@@ -55,8 +55,10 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
 
     @Override
     public boolean updateEtablissement(Etablissement etablissement) {
-        // TODO Auto-generated method stub
-        return false;
+        conn = TheConnection.getInstance();
+        DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
+        boolean res = etablissementDAO.update((Etablissement) etablissement); 
+        return res;
     }
 
     @Override
@@ -67,9 +69,9 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
         ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtab(idFestival, camping);
-        ArrayList<Etablissement> etablissements = cast(list);
+        ArrayList<Etablissement> campings = cast(list);
 
-        return etablissements;
+        return campings;
     }
 
     @SuppressWarnings("unchecked")
