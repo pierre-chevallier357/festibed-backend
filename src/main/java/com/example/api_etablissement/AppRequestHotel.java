@@ -52,8 +52,8 @@ public class AppRequestHotel implements AppInterfaceEtablissement{
     @Override
     public boolean updateEtablissement(Etablissement etablissement) {
         conn = TheConnection.getInstance();
-        DAO<Etablissement> festivalierDAO = new EtablissementDAO(conn);
-        boolean res = festivalierDAO.update((Etablissement) etablissement); 
+        DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
+        boolean res = etablissementDAO.update((Etablissement) etablissement); 
         return res;
     }
 
