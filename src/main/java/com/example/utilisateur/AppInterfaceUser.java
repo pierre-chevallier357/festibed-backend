@@ -1,7 +1,5 @@
-package com.example;
+package com.example.utilisateur;
 import java.util.ArrayList;
-
-import com.example.utilisateur.Utilisateur;
 
 public interface AppInterfaceUser {
     

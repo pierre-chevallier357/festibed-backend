@@ -1,4 +1,4 @@
-package com.example;
+package com.example.utilisateur;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import com.example.DAO.DAO;
 import com.example.DAO.HebergeurDAO;
 import com.example.bdConnection.TheConnection;
-import com.example.utilisateur.Hebergeur;
-import com.example.utilisateur.Utilisateur;
 
 public class AppRequestHebergeur implements AppInterfaceUser{
     

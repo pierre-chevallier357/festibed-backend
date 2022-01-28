@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.api_festival.AppInterfaceFestival;
 import com.example.api_festival.AppRequestFestival;
 import com.example.api_festival.Festival;
+import com.example.utilisateur.AppInterfaceUser;
+import com.example.utilisateur.AppRequestFestivalier;
+import com.example.utilisateur.AppRequestHebergeur;
+import com.example.utilisateur.AppRequestOrganisateur;
 import com.example.utilisateur.Festivalier;
 import com.example.utilisateur.Hebergeur;
 
