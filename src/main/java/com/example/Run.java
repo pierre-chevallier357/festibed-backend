@@ -61,8 +61,9 @@ public class Run {
     }
 
     @GetMapping("/reach-festival-type-complement/{type}&{complement}")
-    public ArrayList<Festival> festivalReachByTypeAndComplement(@PathVariable(value = "type") String type) {
-      return requestFestival.getListOfFestival(5, type);
+    public ArrayList<Festival> festivalReachByTypeAndComplement(@PathVariable(value = "type") String type, @PathVariable(value = "type") String complement) {
+
+      return requestFestival.getListOfFestival(5, type+"&"+complement);
     }
 
 
