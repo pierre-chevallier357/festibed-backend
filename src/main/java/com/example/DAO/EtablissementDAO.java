@@ -139,4 +139,27 @@ public class EtablissementDAO extends DAO<Etablissement> {
 		return etabList;
 	
 	}
+
+	public int getIdEtablissement(String email) {
+		
+		int idEtablissement = -1;
+		Statement myStm;
+		
+		try {
+			myStm = this.connect.createStatement(this.type,this.mode);
+			String q = 	"SELECT IDEtablissement FROM Etablissement " +
+					"WHERE email= '"+email+"'";
+		
+			ResultSet rs = myStm.executeQuery(q);
+			if(rs.first()) {
+				idEtablissement = rs.getInt("idEtablissement");
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return idEtablissement;
+	}
+
 }
