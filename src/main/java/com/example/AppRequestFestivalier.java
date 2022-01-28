@@ -21,14 +21,13 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         int id = -1;
         festivalier.setNom(nom);
         festivalier.setEmail(email);
-        if(!festivalierDAO.create(festivalier)){
+        if(festivalierDAO.create(festivalier)){
 
             id =  ((FestivalierDAO) festivalierDAO).getIdFestivalier(festivalier.getEmail());
             
             festivalier.setIdUser(id);
             listUserConnect.add(festivalier);
         }
-        Tools.connClose(conn);
         return id;
     }
 
@@ -38,17 +37,14 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         conn = TheConnection.getInstance();
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
         Festivalier festivalier = festivalierDAO.read(id);
-        Tools.connClose(conn);
         return festivalier;
-
     }
 
     @Override
     public boolean updateUser(Utilisateur user){
         conn = TheConnection.getInstance();
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
-        boolean res = festivalierDAO.update((Festivalier) user);
-        Tools.connClose(conn);
+        boolean res = festivalierDAO.update((Festivalier) user); 
         return res;
     }
 
@@ -59,7 +55,6 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);       
         ArrayList<Festivalier> list =  ((FestivalierDAO) festivalierDAO).listFestivalier();
         ArrayList<Utilisateur> users = cast(list);
-        Tools.connClose(conn);
         return users;
     }
 
