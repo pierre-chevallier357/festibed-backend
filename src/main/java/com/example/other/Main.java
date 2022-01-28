@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.example.DAO.*;
+import com.example.api_festival.AppInterfaceFestival;
+import com.example.api_festival.AppRequestFestival;
 import com.example.api_festival.Festival;
 import com.example.etablissement.*;
 import com.example.utilisateur.*;
@@ -62,7 +64,9 @@ public class Main {
         
         */
         DAO<Festival> festivalDAO = new FestivalDAO(conn);
-        ArrayList<Festival> listDomaine = ((FestivalDAO) festivalDAO).searchFestivalsByName("Festival de Saint-Denis");
+        //ArrayList<Festival> listDomaine = ((FestivalDAO) festivalDAO).searchFestivalsByVille("REIMS");
+        AppInterfaceFestival requestFestival = new AppRequestFestival();
+        ArrayList<Festival> listDomaine = requestFestival.getListOfFestival(2,"REIMS");
     	
         for (Festival festi : listDomaine) {
             System.out.println(festi.getNom()); 
