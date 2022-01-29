@@ -11,6 +11,7 @@ import com.example.api_festival.Festival;
 import com.example.etablissement.*;
 import com.example.panier.AppInterfacePanier;
 import com.example.panier.AppRequestPanier;
+import com.example.panier.Panier;
 import com.example.panier.Produit;
 import com.example.utilisateur.*;
 import com.example.bdConnection.*;
@@ -118,7 +119,7 @@ public class Main {
 			e.printStackTrace();
 		}*/
 
-        AppInterfacePanier panier = new AppRequestPanier();
+       /* AppInterfacePanier panier = new AppRequestPanier();
 
         Produit produit = new Produit();
         int idFestivalier = 1;
@@ -136,7 +137,12 @@ public class Main {
         ArrayList<Produit> listProduit =  ((AppRequestPanier) panier).getProduct(id);
         for(Produit produit3 : listProduit){
             System.out.println(produit3.getIdFestivalier());
-        }
+        }*/
+
+        DAO<Panier> panierDAO = new PanierDAO(conn);
+
+        Produit produit = ((PanierDAO) panierDAO).getProduit(1);
+        System.out.println(produit.getIdProduit());
         
 
 

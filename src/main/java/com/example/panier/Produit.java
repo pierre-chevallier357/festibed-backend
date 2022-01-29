@@ -1,7 +1,9 @@
 package com.example.panier;
 
-public class Produit {
+import com.example.Tools;
 
+public class Produit {
+    Integer idProduit;
     Integer idFestivalier;
     Integer idFestival;
     Integer idEtablissement;
@@ -37,6 +39,18 @@ public class Produit {
 
     public void setNbPass(int nbPass) {
         this.nbPass = nbPass;
+    }
+
+    public Integer getIdProduit() {
+        return idProduit;
+    }
+
+    public void createIdProduit() {
+        this.idProduit = Tools.randomNum();
+    }
+
+    public void setIdProduit(Integer id){
+        this.idProduit = id;
     }
 
     

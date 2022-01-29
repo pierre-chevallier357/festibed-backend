@@ -14,6 +14,7 @@ public class AppRequestPanier implements AppInterfacePanier{
 
         Panier panier = new Panier();
         panier.setIdFestivalier(idFestivalier);
+        produit.createIdProduit();
         panier.addProduct(produit);
         
         Integer i = Tools.randomNum();
@@ -30,6 +31,7 @@ public class AppRequestPanier implements AppInterfacePanier{
     @Override
     public boolean addProduct(Integer idPanier, Produit produit){
         Panier panier = Tools.panierDansList(listPanier, idPanier);
+        produit.createIdProduit();
         panier.addProduct(produit);
         return true;
     }
