@@ -29,11 +29,11 @@ public class EtablissementDAO extends DAO<Etablissement> {
 			
 			prepare.setString(1, obj.getType());
 			prepare.setString(2, obj.getClassement());
-			prepare.setString(3, obj.getNomCommercial());
+			prepare.setString(3, obj.getNom());
 			prepare.setString(4,obj.getAdresse());
 			prepare.setInt(5, obj.getCodePostal());
 			prepare.setString(6,obj.getCommune());
-			prepare.setString(7,obj.getNumeroDeTelephone());
+			prepare.setString(7,obj.getTelephone());
 			prepare.setString(8,obj.getSiteInternet());
 			prepare.setInt(9,obj.getCapaciteDAccueil());
 			prepare.setInt(10, obj.getNbLogement());
@@ -86,7 +86,7 @@ public class EtablissementDAO extends DAO<Etablissement> {
 					"update ETABLISSEMENT set telephone,siteInternet,capacite,nbLogement"+
 					"where IDEtab="+obj.getIDEtab() );
 			
-			prepare.setString(1, obj.getNumeroDeTelephone());
+			prepare.setString(1, obj.getTelephone());
 			prepare.setString(2, obj.getSiteInternet());
 			prepare.setInt(3, obj.getCapaciteDAccueil());
 			prepare.setInt(4, obj.getNbLogement());

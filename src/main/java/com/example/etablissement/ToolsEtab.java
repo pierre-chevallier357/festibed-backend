@@ -10,13 +10,13 @@ public abstract class ToolsEtab {
 		Etablissement etablissement = new Etablissement();
 		try {
 			etablissement.setType(rs.getString("type"));
-			etablissement.setNomCommercial(rs.getString("nomEtab"));
+			etablissement.setNom(rs.getString("nomEtab"));
 			etablissement.setCapaciteDAccueil(rs.getInt("capacite"));
 			etablissement.setClassement(rs.getString("classement"));
 			etablissement.setIDEtab(rs.getInt("iDEtablissement"));
 			etablissement.setSiteInternet(rs.getString("siteInternet"));
 			etablissement.setEmail(rs.getString("courriel"));
-			etablissement.setNumeroDeTelephone(rs.getString("telephone"));
+			etablissement.setTelephone(rs.getString("telephone"));
 			etablissement.setNbLogement(rs.getInt("NBLOGEMENT"));
 			
 			etablissement.setAdresse(rs.getString("adresse"));

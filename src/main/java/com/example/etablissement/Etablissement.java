@@ -6,8 +6,8 @@ public class Etablissement {
     private int IDEtab;
     private String type;
     private Classement classement;
-    private String nomCommercial;
-    private String numeroDeTelephone;
+    private String nom;
+    private String telephone;
     private String email;
     private String siteInternet;
     private int capaciteDAccueil;    
@@ -36,20 +36,20 @@ public class Etablissement {
         this.classement = Classement.setClassement(classement);
     }
 
-    public String getNomCommercial() {
-        return this.nomCommercial;
+    public String getNom() {
+        return this.nom;
     }
 
-    public void setNomCommercial(String nomCommercial) {
-        this.nomCommercial = nomCommercial;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public String getNumeroDeTelephone() {
-        return this.numeroDeTelephone;
+    public String getTelephone() {
+        return this.telephone;
     }
 
-    public void setNumeroDeTelephone(String numeroDeTelephone) {
-        this.numeroDeTelephone = numeroDeTelephone;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getEmail() {
