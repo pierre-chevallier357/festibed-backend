@@ -5,7 +5,7 @@ public class Etablissement {
 
     private int IDEtab;
     private String type;
-    private Classement classement;
+    private String classement;
     private String nom;
     private String telephone;
     private String email;
@@ -29,11 +29,11 @@ public class Etablissement {
     }
 
     public String getClassement() {
-        return this.classement.ToString();
+        return this.classement;
     }
 
     public void setClassement(String classement) {
-        this.classement = Classement.setClassement(classement);
+        this.classement = classement;
     }
 
     public String getNom() {
