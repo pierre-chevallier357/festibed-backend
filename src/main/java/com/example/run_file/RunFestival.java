@@ -21,30 +21,35 @@ public class RunFestival {
     
     static Connection conn;
     AppInterfaceFestival requestFestival = new AppRequestFestival();
-    @GetMapping("/reach-festival-name/{nom}")
-    public ArrayList<Festival> festivalReachByNom(@PathVariable(value = "nom") String nom) {
+    @GetMapping("/search-festival-name/{nom}")
+    public ArrayList<Festival> festivalSearchByNom(@PathVariable(value = "nom") String nom) {
       return requestFestival.getListOfFestival(1, nom);
     }
     
-    @GetMapping("/reach-festival-ville/{ville}")
-    public ArrayList<Festival> festivalReachByVille(@PathVariable(value = "ville") String ville) {
+    @GetMapping("/search-festival-ville/{ville}")
+    public ArrayList<Festival> festivalSearchByVille(@PathVariable(value = "ville") String ville) {
       return requestFestival.getListOfFestival(2, ville);
     }
 
-    @GetMapping("/reach-festival-type/{departement}")
-    public ArrayList<Festival> festivalReachByDepartement(@PathVariable(value = "departement") String departement) {
+    @GetMapping("/search-festival-type/{departement}")
+    public ArrayList<Festival> festivalSearchByDepartement(@PathVariable(value = "departement") String departement) {
       return requestFestival.getListOfFestival(3, departement);
     }
 
-    @GetMapping("/reach-festival-type/{type}")
-    public ArrayList<Festival> festivalReachByType(@PathVariable(value = "type") String type) {
+    @GetMapping("/search-festival-type/{type}")
+    public ArrayList<Festival> festivalSearchByType(@PathVariable(value = "type") String type) {
       return requestFestival.getListOfFestival(4, type);
     }
 
-    @GetMapping("/reach-festival-type-complement/{type}&{complement}")
-    public ArrayList<Festival> festivalReachByTypeAndComplement(@PathVariable(value = "type") String type, @PathVariable(value = "type") String complement) {
+    @GetMapping("/search-festival-type-complement/{type}&{complement}")
+    public ArrayList<Festival> festivalSearchByTypeAndComplement(@PathVariable(value = "type") String type, @PathVariable(value = "type") String complement) {
 
       return requestFestival.getListOfFestival(5, type+"&"+complement);
+    }
+
+    @GetMapping("/search-all-festival/")
+    public ArrayList<Festival> festivalSearchAll() {
+      return requestFestival.getListOfFestival(6, "null");
     }
 
     

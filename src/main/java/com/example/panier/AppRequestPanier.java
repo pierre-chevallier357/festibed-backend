@@ -42,5 +42,9 @@ public class AppRequestPanier implements AppInterfacePanier{
         return panier.getProductInPanier();
     }
 
+    public Panier getPanier(Integer idPanier){
+      return Tools.panierDansList(listPanier, idPanier);
+    }
+
     
 }

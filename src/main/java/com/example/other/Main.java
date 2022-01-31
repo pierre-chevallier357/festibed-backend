@@ -119,7 +119,7 @@ public class Main {
 			e.printStackTrace();
 		}*/
 
-       /* AppInterfacePanier panier = new AppRequestPanier();
+        AppInterfacePanier panier = new AppRequestPanier();
 
         Produit produit = new Produit();
         int idFestivalier = 1;
@@ -130,19 +130,22 @@ public class Main {
         Integer id = panier.createPanier(idFestivalier, produit);
         Produit produit2 = new Produit();
         produit2.setIdEtablissement(1414141);
-        produit2.setIdFestival(55555);
+        produit2.setIdFestival(12);
         produit2.setIdFestivalier(11111);
-        produit2.setNbPass(5);
+        //produit2.setNbPass(1);
         panier.addProduct(id, produit2);
-        ArrayList<Produit> listProduit =  ((AppRequestPanier) panier).getProduct(id);
-        for(Produit produit3 : listProduit){
+        for(Produit produit3 : ((AppRequestPanier) panier).getProduct(id)){
             System.out.println(produit3.getIdFestivalier());
-        }*/
+        }
 
         DAO<Panier> panierDAO = new PanierDAO(conn);
-
-        Produit produit = ((PanierDAO) panierDAO).getProduit(1);
-        System.out.println(produit.getIdProduit());
+        if(((AppRequestPanier) panier).getPanier(id) != null){
+            panierDAO.create(((AppRequestPanier) panier).getPanier(id));
+            Panier panier2 = panierDAO.read(id);
+            for(Produit produit3 : panier2.getProductInPanier()){
+                System.out.println(produit3.getIdFestivalier());
+            }
+        }
         
 
 

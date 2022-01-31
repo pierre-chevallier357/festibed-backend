@@ -61,6 +61,9 @@ public class AppRequestFestival implements AppInterfaceFestival{
             case 5 :
                 list  = ((FestivalDAO) festivalDAO).searchFestivalsByTypeAndComplement(searchElement);
                 break;
+            case 6 :
+                list  = ((FestivalDAO) festivalDAO).searchFestivalsByName(searchElement);
+                break;
             default :
                 list = new ArrayList<>();
                 break;
