@@ -11,7 +11,7 @@
     <version>2.3.0.RELEASE</version>
     <relativePath/>
   </parent>
-  <name>java-getting-started</name>
+  <name>festibed_gp6</name>
 
   <properties>
     <java.version>1.8</java.version>
