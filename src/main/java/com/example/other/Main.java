@@ -118,7 +118,7 @@ public class Main {
 			
 			e.printStackTrace();
 		}*/
-
+/*
         AppInterfacePanier panier = new AppRequestPanier();
 
         Produit produit = new Produit();
@@ -145,6 +145,16 @@ public class Main {
             for(Produit produit3 : panier2.getProductInPanier()){
                 System.out.println(produit3.getIdFestivalier());
             }
+        }*/
+        
+        DAO<Festival> festivalDAO = new FestivalDAO(conn);
+
+        ArrayList<Festival> listComp = ((FestivalDAO) festivalDAO).searchHundredFestivals();
+    	
+        for (Festival festi : listComp) {
+        	if (festi.getComplementDomaine() != null) {
+        		System.out.println(festi.getComplementDomaine() +"   ID : "+ festi.getIdFestival()); 
+        	}
         }
         
 
