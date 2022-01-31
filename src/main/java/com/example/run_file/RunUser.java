@@ -13,8 +13,8 @@ import com.example.api_utilisateur.AppRequestHebergeur;
 import com.example.api_utilisateur.AppRequestOrganisateur;
 import com.example.utilisateur.Festivalier;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 @RequestMapping("/user")
 
 public class RunUser {

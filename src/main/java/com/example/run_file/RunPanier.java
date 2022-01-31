@@ -13,8 +13,8 @@ import com.example.panier.AppInterfacePanier;
 import com.example.panier.AppRequestPanier;
 import com.example.panier.Produit;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 @RequestMapping("/panier")
 public class RunPanier {
 

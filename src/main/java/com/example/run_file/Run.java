@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Tools;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 @RequestMapping("/")
 public class Run {
 

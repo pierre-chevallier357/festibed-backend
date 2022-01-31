@@ -12,8 +12,8 @@ import com.example.api_festival.AppInterfaceFestival;
 import com.example.api_festival.AppRequestFestival;
 import com.example.api_festival.Festival;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 @RequestMapping("/festival")
 
 public class RunFestival {
