@@ -139,12 +139,21 @@ public class Main {
             System.out.println(prod.getIdFestivalier());
         }
 
-    }*/
+    }
     AppInterfaceUser userReq =  new AppRequestFestivalier();
 
     int id = ((AppRequestFestivalier) userReq).createTempUser();
     System.out.println(id);     
 
+*/
+    DAO<Festival> festivalDAO = new FestivalDAO(conn);
+    String nom ="null",  ville="null",  type="Danse",  departement="null",  mois="null";
 
+        ArrayList<Festival> listF = new ArrayList<>();
+
+        listF =  ((FestivalDAO) festivalDAO).searchFestivals( nom,  ville,  type,  departement,  mois);
+        for(Festival fes : listF){
+            System.out.println(fes.getNom());
+        }
     }
 }

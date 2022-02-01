@@ -300,18 +300,9 @@ public class FestivalDAO extends DAO<Festival> {
 				else{
 					q+= " AND ";
 				}
-				q += " TYPE = '"+type+"'";
+				q += " DOMAINE = '"+type+"'";
 			}
-			if(!type.equals("null")){
-				if(isFirst){
-					isFirst = false;
 
-				}
-				else{
-					q+= " AND ";
-				}
-				q += " TYPE = '"+type+"'";
-			}
 			if(!departement.equals("null")){
 				if(isFirst){
 					isFirst = false;
@@ -336,7 +327,7 @@ public class FestivalDAO extends DAO<Festival> {
 			while(rs.next()) {
 				festivalList.add(ToolsFestival.readFestivalInformation(rs));
 			}
-			
+			System.out.println(q);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
