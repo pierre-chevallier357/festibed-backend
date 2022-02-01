@@ -31,7 +31,7 @@ public class RunFestival {
       return requestFestival.getListOfFestival(2, ville);
     }
 
-    @GetMapping("/search-festival-type/{departement}")
+    @GetMapping("/search-festival-departement/{departement}")
     public ArrayList<Festival> festivalSearchByDepartement(@PathVariable(value = "departement") String departement) {
       return requestFestival.getListOfFestival(3, departement);
     }
@@ -50,6 +50,11 @@ public class RunFestival {
     @GetMapping("/search-all-festival/")
     public ArrayList<Festival> festivalSearchAll() {
       return requestFestival.getListOfFestival(6, "null");
+    }
+
+    @GetMapping("/search-festival-mounth/{mois}")
+    public ArrayList<Festival> festivalSearchByMounth(@PathVariable(value = "mois") String mois) {
+      return requestFestival.getListOfFestival(7, mois);
     }
 
     
