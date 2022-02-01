@@ -42,11 +42,14 @@ public class AppRequestOrganisateur implements AppInterfaceUser{
     }
     
     @Override
-    public boolean updateUser(Utilisateur user){
+    public boolean updateUser(Integer id, String nom , String email){
         conn = TheConnection.getInstance();
+        Organisateur organisateur = new Organisateur();
+        organisateur.setIdUser(id);
+        organisateur.setEmail(email);
+        organisateur.setNom(nom);
         DAO<Organisateur> organisateurDAO = new OrganisateurDAO(conn);
-        boolean res = organisateurDAO.update((Organisateur) user);
-
+        boolean res = organisateurDAO.update((Organisateur) organisateur); 
         return res;
     }
 

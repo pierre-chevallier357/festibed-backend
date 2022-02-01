@@ -49,10 +49,14 @@ public class AppRequestHebergeur implements AppInterfaceUser{
     }
     
     @Override
-    public boolean updateUser(Utilisateur user){
+    public boolean updateUser(Integer id, String nom , String email){
         conn = TheConnection.getInstance();
-        DAO<Hebergeur> hebergementrDAO = new HebergeurDAO(conn);
-        boolean res = hebergementrDAO.update((Hebergeur) user);
+        Hebergeur hebergeur = new Hebergeur();
+        hebergeur.setIdUser(id);
+        hebergeur.setEmail(email);
+        hebergeur.setNom(nom);
+        DAO<Hebergeur> hebergeurDAO = new HebergeurDAO(conn);
+        boolean res = hebergeurDAO.update((Hebergeur) hebergeur); 
         return res;
     }
 
