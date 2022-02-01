@@ -3,6 +3,7 @@ package com.example.api_utilisateur;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.example.Tools;
 import com.example.DAO.DAO;
 import com.example.DAO.FestivalierDAO;
 import com.example.bdConnection.TheConnection;
@@ -33,9 +34,10 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         conn = TheConnection.getInstance();
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
         Festivalier festivalier = new Festivalier();
+        festivalier.setEmail("tempEmail"+Tools.randomNum());
         int id = -1;
-        if(((FestivalierDAO) festivalierDAO).createTempFestivalier()){
-            id =  ((FestivalierDAO) festivalierDAO).getIdFestivalier("tempEmail");
+        if(((FestivalierDAO) festivalierDAO).createTempFestivalier(festivalier.getEmail())){
+            id =  ((FestivalierDAO) festivalierDAO).getIdFestivalier(festivalier.getEmail());
             festivalier.setIdUser(id);
             listUserConnect.add(festivalier);
         }

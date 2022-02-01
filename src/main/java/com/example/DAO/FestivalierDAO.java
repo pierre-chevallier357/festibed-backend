@@ -37,7 +37,7 @@ public class FestivalierDAO extends DAO<Festivalier> {
 		return res;
 	}
 
-	public boolean createTempFestivalier() {
+	public boolean createTempFestivalier(String tempEmail) {
 		
 		boolean res = false;
 
@@ -49,7 +49,7 @@ public class FestivalierDAO extends DAO<Festivalier> {
 					);
 			
 			prepare.setString(1, "tempUser");
-			prepare.setString(2, "tempEmail");
+			prepare.setString(2, tempEmail);
 
 			prepare.executeUpdate();
 			res = true;
