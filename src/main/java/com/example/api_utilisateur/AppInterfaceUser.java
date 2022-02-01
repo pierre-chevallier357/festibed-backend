@@ -12,7 +12,7 @@ public interface AppInterfaceUser {
 
     public Utilisateur getUser(int id);
 
-    public boolean updateUser(Utilisateur user);
+    public boolean updateUser(Integer id, String nom , String email);
 
     public ArrayList<Utilisateur> getListOfUser();
 

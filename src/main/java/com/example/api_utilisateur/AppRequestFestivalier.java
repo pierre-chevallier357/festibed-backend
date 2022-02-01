@@ -52,10 +52,14 @@ public class AppRequestFestivalier implements AppInterfaceUser {
     }
 
     @Override
-    public boolean updateUser(Utilisateur user){
+    public boolean updateUser(Integer id, String nom , String email){
         conn = TheConnection.getInstance();
+        Festivalier festivalier = new Festivalier();
+        festivalier.setIdUser(id);
+        festivalier.setEmail(email);
+        festivalier.setNom(nom);
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
-        boolean res = festivalierDAO.update((Festivalier) user); 
+        boolean res = festivalierDAO.update((Festivalier) festivalier); 
         return res;
     }
 

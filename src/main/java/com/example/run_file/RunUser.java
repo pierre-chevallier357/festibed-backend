@@ -61,5 +61,13 @@ public class RunUser {
       int id = requestUser.createUser(nom, email);      
       return id;
     }
+
+    @GetMapping("/connection-Festivalier/{idFestivalier}&{nom}&{email}")
+    Integer updateFestivalier(@PathVariable(value = "idFestivalier") Integer id,@PathVariable(value = "nom") String nom, @PathVariable(value = "email") String email) {
+      requestUser = new AppRequestFestivalier();
+
+      requestUser.updateUser(id, nom, email);   
+      return id;
+    }
     
 }
