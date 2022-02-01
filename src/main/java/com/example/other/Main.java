@@ -147,7 +147,7 @@ public class Main {
 
 */
     DAO<Festival> festivalDAO = new FestivalDAO(conn);
-    String nom ="null",  ville="null",  type="Danse",  departement="null",  mois="null";
+    String nom ="null",  ville="null",  type="null",  departement="null",  mois="mars";
 
         ArrayList<Festival> listF = new ArrayList<>();
 

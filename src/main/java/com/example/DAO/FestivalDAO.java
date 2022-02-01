@@ -321,7 +321,7 @@ public class FestivalDAO extends DAO<Festival> {
 				else{
 					q+= " AND ";
 				}
-				q += " mois LIKE '%"+mois+"%'";
+				q += " moisDebut LIKE '%"+mois+"%'";
 			}
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
