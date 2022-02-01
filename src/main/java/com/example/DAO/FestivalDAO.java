@@ -237,7 +237,7 @@ public class FestivalDAO extends DAO<Festival> {
 		
 		try {
 			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM Festival WHERE WHERE idFestival < 101";
+			String q = 	"SELECT * FROM Festival WHERE idFestival < 101";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				festivalList.add(ToolsFestival.readFestivalInformation(rs));
