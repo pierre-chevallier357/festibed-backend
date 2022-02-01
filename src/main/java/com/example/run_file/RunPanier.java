@@ -1,6 +1,7 @@
 package com.example.run_file; 
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,11 @@ public class RunPanier {
       produit.setIdFestivalier(idFestivalier);
       requestPanier.addProduct(idFestivalier, produit);
       return true;
+    }
+
+    @GetMapping("/get-panier/{idFestivalier}")
+    public ArrayList<Produit> getPanier(@PathVariable(value = "idFestivalier") Integer idFestivalier) {
+      return requestPanier.getPanier(idFestivalier).getProductInPanier();
     }
     
 }
