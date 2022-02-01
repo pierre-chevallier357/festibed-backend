@@ -52,8 +52,8 @@ public class RunFestival {
       return requestFestival.getListOfFestival(6, "null");
     }
 
-    @GetMapping("/search-festival-mounth/{mois}")
-    public ArrayList<Festival> festivalSearchByMounth(@PathVariable(value = "mois") String mois) {
+    @GetMapping("/search-festival-month/{mois}")
+    public ArrayList<Festival> festivalSearchByMonth(@PathVariable(value = "mois") String mois) {
       return requestFestival.getListOfFestival(7, mois);
     }
 

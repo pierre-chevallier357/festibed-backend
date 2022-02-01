@@ -249,12 +249,12 @@ public class FestivalDAO extends DAO<Festival> {
 		return festivalList;
 	}
 
-    public ArrayList<Festival> searchByMounth(String mounth) {
+    public ArrayList<Festival> searchByMonth(String month) {
 		ArrayList<Festival> festivalList = new ArrayList<>();
 		
 		try {
 			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM Festival WHERE MOISDEBUT LIKE '"+mounth+"%'";
+			String q = 	"SELECT * FROM Festival WHERE MOISDEBUT LIKE '"+month+"%'";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				festivalList.add(ToolsFestival.readFestivalInformation(rs));
