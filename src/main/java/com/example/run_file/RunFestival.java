@@ -30,8 +30,8 @@ public class RunFestival {
       return id;
     }
 
-    @GetMapping("/search-festival-name/{nom}&{ville}&{type}&{departement}&{mois}")
-    public ArrayList<Festival> festivalSearchByNom(@PathVariable(value = "nom") String nom, @PathVariable(value = "ville") String ville, @PathVariable(value = "type") String type ,@PathVariable(value = "departement") String departement, @PathVariable(value = "mois") String mois) {
+    @GetMapping("/search-festival/{nom}&{ville}&{type}&{departement}&{mois}")
+    public ArrayList<Festival> festivalSearch(@PathVariable(value = "nom") String nom, @PathVariable(value = "ville") String ville, @PathVariable(value = "type") String type ,@PathVariable(value = "departement") String departement, @PathVariable(value = "mois") String mois) {
       return requestFestival.getListOfFestival(nom, ville, type, departement, mois);
     }
 
