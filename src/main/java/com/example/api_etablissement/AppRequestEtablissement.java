@@ -44,34 +44,15 @@ public class AppRequestEtablissement implements AppInterfaceEtablissement{
     }
 
     @Override
-    public ArrayList<Etablissement> getListOfEtablissement(Integer idFestival, String type, int typeOfReach, String option) {
+    public ArrayList<Etablissement> getListOfEtablissement(Integer idFestival, String nom, String type, String ville) {
         
         conn = TheConnection.getInstance();
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        ArrayList<Etablissement> list;
+      
+        return ((EtablissementDAO) etablissementDAO).searchEtablissement(idFestival, nom, type, ville);   
 
-        switch (typeOfReach){
-
-            case 1 : 
-                list  = ((EtablissementDAO) etablissementDAO).listEtabByName(idFestival, type, option);
-                break;
-
-            case 2 :
-                list  = ((EtablissementDAO) etablissementDAO).listEtabByVille(idFestival, type, option);
-                break;
-
-            case 3 :
-                list  = ((EtablissementDAO) etablissementDAO).listEtabByType(idFestival, type);
-                break;
-
-            default :
-                list = new ArrayList<>();
-                break;
-
-        }
-
-        return list;
+        
     }
 
 

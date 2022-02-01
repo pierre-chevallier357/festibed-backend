@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public abstract class ToolsEtab {
 
-    public static Etablissement getAllInfo(ResultSet rs, String type) {
+    public static Etablissement getAllInfo(ResultSet rs) {
 		Etablissement etablissement = new Etablissement();
 		try {
 			etablissement.setType(rs.getString("type"));
@@ -55,7 +55,7 @@ public abstract class ToolsEtab {
 				etablissement = new Residence();
 			break;
 		}
-		etablissement = getAllInfo(rs, type);
+		etablissement = getAllInfo(rs);
 		return etablissement;
 	}
     

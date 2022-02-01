@@ -120,7 +120,7 @@ public class Main {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-		}*/
+		}
         
 
         AppInterfacePanier panier = new AppRequestPanier();
@@ -155,6 +155,15 @@ public class Main {
         for(Festival fes : listF){
             System.out.println(fes.getNom()+" type : "+fes.getDepartement());
         }*/
+
+
+        EtablissementDAO etabDAO = new EtablissementDAO(conn);
+        String nom ="null",  ville="REIMS",  type="HOTEL";
+        ArrayList<Etablissement> listE = new ArrayList<>();
+        listE =  etabDAO.searchEtablissement(2, nom, type, ville);
+        for(Etablissement etab : listE){
+            System.out.println(etab.getNom()+" type : "+etab.getCommune());
+        }
     }
 
 }

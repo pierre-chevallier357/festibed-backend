@@ -11,7 +11,7 @@ public interface AppInterfaceEtablissement {
 
     public boolean updateEtablissement(Etablissement etablissement);
 
-    public ArrayList<Etablissement> getListOfEtablissement(Integer idFestival, String type, int typeOfReach, String option);
+    public ArrayList<Etablissement> getListOfEtablissement(Integer idFestival, String nom, String type, String ville);
 
 
 }

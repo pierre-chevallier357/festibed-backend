@@ -153,25 +153,6 @@ public class FestivalDAO extends DAO<Festival> {
 		return festivalList;
 	
 	}
-	
-	
-	public ArrayList<Festival> searchFestivalsByType(String Domaine) {	
-		ArrayList<Festival> festivalList = new ArrayList<>();
-		
-		try {
-			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM Festival WHERE Domaine = '"+Domaine+"'";
-			ResultSet rs = myStm.executeQuery(q);
-			while(rs.next()) {
-				festivalList.add(ToolsFestival.readFestivalInformation(rs));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return festivalList;
-	
-	}
 
 	public Festival readIdByName(Festival festival) {	
 		Statement myStm;
@@ -183,7 +164,7 @@ public class FestivalDAO extends DAO<Festival> {
 			
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
-				festival.setIdFestival(rs.getInt("idFestival"));;
+				festival.setIdFestival(rs.getInt("idFestival"));
 			}
 			
 		}
@@ -192,45 +173,7 @@ public class FestivalDAO extends DAO<Festival> {
 			e.printStackTrace();
 		}
 		return festival;
-}
-
-	public ArrayList<Festival> searchFestivalsByTypeAndComplement(String searchElement) {
-		ArrayList<Festival> festivalList = new ArrayList<>();
-		String[] tab = searchElement.split("&");
-        String type = tab[1];
-        String complementOfType = tab[2];
-
-		
-		try {
-			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM Festival WHERE Domaine = '"+type+"' and COMPLEMENT_DOMAINE = '"+complementOfType+"'";
-			ResultSet rs = myStm.executeQuery(q);
-			while(rs.next()) {
-				festivalList.add(ToolsFestival.readFestivalInformation(rs));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return festivalList;
 	}
-
-    public ArrayList<Festival> searchFestivalsByName(String nom) {		
-		ArrayList<Festival> festivalList = new ArrayList<>();
-		
-		try {
-			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM Festival WHERE nom LIKE '%"+nom+"%'";
-			ResultSet rs = myStm.executeQuery(q);
-			while(rs.next()) {
-				festivalList.add(ToolsFestival.readFestivalInformation(rs));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return festivalList;
-    }
 
 	public ArrayList<Festival> searchHundredFestivals() {		
 		ArrayList<Festival> festivalList = new ArrayList<>();
@@ -248,24 +191,6 @@ public class FestivalDAO extends DAO<Festival> {
 		}
 		return festivalList;
 	}
-
-    public ArrayList<Festival> searchByMonth(String month) {
-		ArrayList<Festival> festivalList = new ArrayList<>();
-		
-		try {
-			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM Festival WHERE MOISDEBUT LIKE '"+month+"%'";
-			ResultSet rs = myStm.executeQuery(q);
-			while(rs.next()) {
-				festivalList.add(ToolsFestival.readFestivalInformation(rs));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return festivalList;
-    }
-
 
 
 	public ArrayList<Festival> searchFestivals(String nom, String ville, String type, String departement, String mois) {	

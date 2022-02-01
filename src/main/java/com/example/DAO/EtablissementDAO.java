@@ -119,65 +119,7 @@ public class EtablissementDAO extends DAO<Etablissement> {
 		
 		return res;
 	}
-	
-	public ArrayList<Etablissement> listEtabByName(int idFestival, String type, String name) {	
-		ArrayList<Etablissement> etabList = new ArrayList<>();
-		
-		try {
-			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM ETABLISSEMENT WHERE NOMETAB LIKE '%"+name+"%' and TYPE = '"+type+"'";//+"' and idFestival="+idFestival;
-			ResultSet rs = myStm.executeQuery(q);
-			while(rs.next()) {
-				
-				etabList.add(ToolsEtab.readEtablissementByType(rs, type));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return etabList;
-	
-	}
 
-
-	public ArrayList<Etablissement> listEtabByType(int idFestival, String type) {	
-		ArrayList<Etablissement> etabList = new ArrayList<>();
-		
-		try {
-			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM ETABLISSEMENT WHERE TYPE = '"+type+"'";//+"' and idFestival="+idFestival;
-			ResultSet rs = myStm.executeQuery(q);
-			while(rs.next()) {
-				
-				etabList.add(ToolsEtab.readEtablissementByType(rs, type));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return etabList;
-	
-	}
-
-
-	public ArrayList<Etablissement> listEtabByVille(int idFestival, String type, String ville) {	
-		ArrayList<Etablissement> etabList = new ArrayList<>();
-		
-		try {
-			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM ETABLISSEMENT WHERE VILLE LIKE '%"+ville+"%' and TYPE = '"+type+"'";//+"' and idFestival="+idFestival;
-			ResultSet rs = myStm.executeQuery(q);
-			while(rs.next()) {
-				
-				etabList.add(ToolsEtab.readEtablissementByType(rs, type));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return etabList;
-	
-	}
 
 	public int getIdEtablissement(String email) {
 		
@@ -199,6 +141,53 @@ public class EtablissementDAO extends DAO<Etablissement> {
 		}
 
 		return idEtablissement;
+	}
+
+
+	public ArrayList<Etablissement> searchEtablissement(Integer idFestival, String nom, String type, String ville) {	
+		ArrayList<Etablissement> etabList = new ArrayList<>();
+		boolean isFirst = true;
+		
+		try {
+			Statement myStm = this.connect.createStatement(this.type,this.mode);
+			String q = 	"SELECT * FROM Etablissement WHERE"; //+ idFestival ="+isFestival
+			if(!nom.equals("null")){
+				if(isFirst){
+					q += " UPPER(NOM) LIKE '%"+nom+"%'";
+					isFirst = false;
+				}
+			}
+			if(!ville.equals("null")){
+				if(isFirst){
+					isFirst = false;
+
+				}
+				else{
+					q+= " AND ";
+				}
+				q += " UPPER(VILLE) LIKE '%"+ville+"%'";
+			}
+			if(!type.equals("null")){
+				if(isFirst){
+					isFirst = false;
+
+				}
+				else{
+					q+= " AND ";
+				}
+				q += " TYPE = '"+type+"'";
+			}
+
+			System.out.println(q);
+			ResultSet rs = myStm.executeQuery(q);
+			while(rs.next()) {
+				etabList.add(ToolsEtab.getAllInfo(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return etabList;
+	
 	}
 
 }

@@ -32,7 +32,7 @@ public class ProduitDAO extends DAO<Produit> {
             prepare.setInt(2, obj.getIdEtablissement());
             prepare.setInt(3, obj.getIdFestival());
             prepare.setInt(4, obj.getNbPass());
-			Date time = new Date(ins);
+			Date time = new Date();
 
 			DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
 			prepare.setString(5, shortDateFormat.format(time));
