@@ -147,13 +147,13 @@ public class Main {
 
 */
     DAO<Festival> festivalDAO = new FestivalDAO(conn);
-    String nom ="null",  ville="null",  type="null",  departement="null",  mois="mars";
+    String nom ="null",  ville="BEAUMONT DE PERTUIS",  type="null",  departement="null",  mois="null";
 
         ArrayList<Festival> listF = new ArrayList<>();
 
         listF =  ((FestivalDAO) festivalDAO).searchFestivals( nom,  ville,  type,  departement,  mois);
         for(Festival fes : listF){
-            System.out.println(fes.getNom());
+            System.out.println(fes.getNom()+" type : "+fes.getDepartement());
         }
     }
 }

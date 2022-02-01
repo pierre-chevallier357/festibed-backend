@@ -278,7 +278,7 @@ public class FestivalDAO extends DAO<Festival> {
 
 			if(!nom.equals("null")){
 				if(isFirst){
-					q += " NOM LIKE '%"+nom+"%'";
+					q += " UPPER(NOM) LIKE '%"+nom+"%'";
 					isFirst = false;
 				}
 			}
@@ -290,7 +290,7 @@ public class FestivalDAO extends DAO<Festival> {
 				else{
 					q+= " AND ";
 				}
-				q += " VILLE LIKE '%"+ville+"%'";
+				q += " UPPER(VILLE) LIKE '%"+ville+"%'";
 			}
 			if(!type.equals("null")){
 				if(isFirst){
