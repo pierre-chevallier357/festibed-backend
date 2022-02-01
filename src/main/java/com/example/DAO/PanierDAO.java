@@ -53,7 +53,7 @@ public class PanierDAO extends DAO<Panier> {
 			Produit produit = new Produit();
 			try {
 				String q = 	"SELECT * FROM Panier " +
-						"WHERE IDPanier="+id;
+						"WHERE IDFestivalier="+id;
 				myStm = this.connect.createStatement(this.type,this.mode);
 				
 				ResultSet rs = myStm.executeQuery(q);

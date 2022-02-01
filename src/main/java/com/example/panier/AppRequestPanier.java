@@ -2,58 +2,35 @@ package com.example.panier;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-
-import com.example.Tools;
+import com.example.DAO.DAO;
+import com.example.DAO.PanierDAO;
+import com.example.DAO.ProduitDAO;
 
 public class AppRequestPanier implements AppInterfacePanier{
 
 
-    Panier panier;
+    
     
     static Connection conn;
 
     @Override
-    public Integer createPanier(Integer idFestivalier, Produit produit){
-        Panier panier = new Panier();
-        panier.setIdFestivalier(idFestivalier);
-        produit.createIdProduit();
-        panier.addProduct(produit);
-        Integer i = Tools.randomNum();
-        for (Panier p : listPanier) {
-          while(p.getIdPanier().equals(i)){
-            i = Tools.randomNum();
-          }
-        }
-        panier.setIdPanier(i);
-        
-        listPanier.add(panier);
-        return i;
+    public boolean addProduct(Integer idFestivalier, Produit produit){
+
+      DAO<Produit> produitDAO = new ProduitDAO(conn);
+      produitDAO.create(produit);
+      return true;
     }
 
     @Override
-    public boolean addProduct(Integer idPanier, Produit produit){
-        Panier panier = Tools.panierDansList(listPanier, idPanier);
-        produit.createIdProduit();
-        panier.addProduct(produit);
-        return true;
+    public ArrayList<Produit> getProduct(Integer idFestivalier){
+
+      DAO<Produit> produitDAO = new ProduitDAO(conn);
+      return ((ProduitDAO) produitDAO).readlist(idFestivalier);
     }
 
-    @Override
-    public ArrayList<Produit> getProduct(Integer idPanier){
-        Panier panier = Tools.panierDansList(listPanier, idPanier);
-        return panier.getProductInPanier();
-    }
-
-    public Panier getPanier(Integer idPanier){
-      return Tools.panierDansList(listPanier, idPanier);
-    }
-
-
-    public Produit getFistProduit(Integer idPanier){
-      Panier panier = Tools.panierDansList(listPanier, idPanier);
-      return panier.getFirstProductInPanier();
-        
-      
+    public Panier getPanier(Integer idFestivalier){
+      DAO<Panier> panierDAO = new PanierDAO(conn);
+      return panierDAO.read(idFestivalier);
     }
 
     

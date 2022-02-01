@@ -122,7 +122,6 @@ public class Main {
         
 
         AppInterfacePanier panier = new AppRequestPanier();
-        DAO<Panier> panierDAO = new PanierDAO(conn);
 
         Produit produit = new Produit();
         int idFestivalier = 1;
@@ -131,42 +130,12 @@ public class Main {
         produit.setIdFestival(124);
         produit.setIdFestivalier(1);
         produit.setNbPass(1);
-        Integer id = panier.createPanier(idFestivalier, produit);
-        panierDAO.create(((AppRequestPanier) panier).getPanier(id));
+        panier.addProduct(idFestivalier, produit);
 
-
-        Produit produit2 = new Produit();
-        produit2.createIdProduit();
-        produit2.setIdEtablissement(1);
-        produit2.setIdFestival(1);
-        produit2.setIdFestivalier(11111);
-        produit2.setNbPass(1);
-        //produitDAO.create(produit2);
-        panier.addProduct(id, produit2);
-
-        ((PanierDAO) panierDAO).addProductInPanier(((AppRequestPanier) panier).getPanier(id), produit2);
-        //produitDAO.create(produit2);
-        /*for(Produit produit3 : ((AppRequestPanier) panier).getProduct(id)){
-            System.out.println("IDFestivalier : "+produit3.getIdFestivalier()+" ID Heberg : "+produit3.getIdEtablissement());
-        }*/
-            
-        Panier panier2 = panierDAO.read(id);
-        for(Produit produit3 : panier2.getProductInPanier()){
-            System.out.println("IDFestivalier : "+produit3.getIdFestivalier()+" ID Heberg : "+produit3.getIdEtablissement());
+        ArrayList<Produit> produitList = panier.getProduct(idFestivalier);
+        for (Produit prod : produitList){
+            System.out.println(prod.getIdFestivalier());
         }
-        /*
-        
-        DAO<Festival> festivalDAO = new FestivalDAO(conn);
-
-        ArrayList<Festival> listComp = ((FestivalDAO) festivalDAO).searchHundredFestivals();
-    	
-        for (Festival festi : listComp) {
-        	if (festi.getComplementDomaine() != null) {
-        		System.out.println(festi.getComplementDomaine() +"   ID : "+ festi.getIdFestival()); 
-        	}
-        }*/
-        
-
 
     }
 

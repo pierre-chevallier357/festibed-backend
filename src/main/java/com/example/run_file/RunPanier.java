@@ -21,14 +21,10 @@ public class RunPanier {
     static Connection conn;
     AppInterfacePanier requestPanier = new AppRequestPanier();
 
-    @GetMapping("/first-product/{idFestivalier}&{product}")
-    public Integer firstProductCreatePanier(@PathVariable(value = "idFestivalier") Integer idFestivalier, @PathVariable(value = "product") Produit produit) {
-      return requestPanier.createPanier(idFestivalier, produit);
-    }
-
-    @GetMapping("/add-product/{idPanier}&{product}")
-    public boolean addProduct(@PathVariable(value = "idPanier") Integer idPanier, @PathVariable(value = "product") Produit produit) {
-      requestPanier.addProduct(idPanier, produit);
+    @GetMapping("/add-product/{idFestivalier}&{product}")
+    public boolean addProduct(@PathVariable(value = "idFestivalier") Integer idFestivalier, @PathVariable(value = "product") Produit produit) {
+      produit.setIdFestivalier(idFestivalier);
+      requestPanier.addProduct(idFestivalier, produit);
       return true;
     }
     
