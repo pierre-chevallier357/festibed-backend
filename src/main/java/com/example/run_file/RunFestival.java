@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Tools;
 import com.example.api_festival.AppInterfaceFestival;
 import com.example.api_festival.AppRequestFestival;
 import com.example.api_festival.Festival;
@@ -21,6 +22,14 @@ public class RunFestival {
     
     static Connection conn;
     AppInterfaceFestival requestFestival = new AppRequestFestival();
+
+    @GetMapping("/")
+    public Integer getIdTemp() {
+      Integer id;
+      id = Tools.randomNum();
+      return id;
+    }
+
     @GetMapping("/search-festival-name/{nom}")
     public ArrayList<Festival> festivalSearchByNom(@PathVariable(value = "nom") String nom) {
       return requestFestival.getListOfFestival(1, nom);

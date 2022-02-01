@@ -122,39 +122,39 @@ public class Main {
         
 
         AppInterfacePanier panier = new AppRequestPanier();
-        ProduitDAO produitDAO = new ProduitDAO(conn);
-
+        DAO<Panier> panierDAO = new PanierDAO(conn);
 
         Produit produit = new Produit();
         int idFestivalier = 1;
         produit.createIdProduit();
         produit.setIdEtablissement(1);
         produit.setIdFestival(124);
-        produit.setIdFestivalier(idFestivalier);
+        produit.setIdFestivalier(1);
         produit.setNbPass(1);
         Integer id = panier.createPanier(idFestivalier, produit);
-        produitDAO.create(produit);
+        panierDAO.create(((AppRequestPanier) panier).getPanier(id));
+
+
         Produit produit2 = new Produit();
         produit2.createIdProduit();
-        produit2.setIdEtablissement(141);
+        produit2.setIdEtablissement(1);
         produit2.setIdFestival(1);
         produit2.setIdFestivalier(11111);
         produit2.setNbPass(1);
-        produitDAO.create(produit2);
+        //produitDAO.create(produit2);
         panier.addProduct(id, produit2);
-        produitDAO.create(produit2);
+
+        ((PanierDAO) panierDAO).addProductInPanier(((AppRequestPanier) panier).getPanier(id), produit2);
+        //produitDAO.create(produit2);
         /*for(Produit produit3 : ((AppRequestPanier) panier).getProduct(id)){
             System.out.println("IDFestivalier : "+produit3.getIdFestivalier()+" ID Heberg : "+produit3.getIdEtablissement());
         }*/
-
-        DAO<Panier> panierDAO = new PanierDAO(conn);
-        if(((AppRequestPanier) panier).getPanier(id) != null){
-            panierDAO.create(((AppRequestPanier) panier).getPanier(id));
-            Panier panier2 = panierDAO.read(id);
-            for(Produit produit3 : panier2.getProductInPanier()){
-                System.out.println("IDFestivalier : "+produit3.getIdFestivalier()+" ID Heberg : "+produit3.getIdEtablissement());
-            }
-        }/*
+            
+        Panier panier2 = panierDAO.read(id);
+        for(Produit produit3 : panier2.getProductInPanier()){
+            System.out.println("IDFestivalier : "+produit3.getIdFestivalier()+" ID Heberg : "+produit3.getIdEtablissement());
+        }
+        /*
         
         DAO<Festival> festivalDAO = new FestivalDAO(conn);
 

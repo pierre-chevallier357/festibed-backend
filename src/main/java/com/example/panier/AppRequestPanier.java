@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.example.Tools;
-import com.example.DAO.PanierDAO;
 
 public class AppRequestPanier implements AppInterfacePanier{
 
@@ -15,7 +14,6 @@ public class AppRequestPanier implements AppInterfacePanier{
 
     @Override
     public Integer createPanier(Integer idFestivalier, Produit produit){
-        PanierDAO panierDAO = new PanierDAO(conn);
         Panier panier = new Panier();
         panier.setIdFestivalier(idFestivalier);
         produit.createIdProduit();
@@ -28,7 +26,6 @@ public class AppRequestPanier implements AppInterfacePanier{
         }
         panier.setIdPanier(i);
         
-        panierDAO.create(panier);
         listPanier.add(panier);
         return i;
     }
@@ -36,10 +33,8 @@ public class AppRequestPanier implements AppInterfacePanier{
     @Override
     public boolean addProduct(Integer idPanier, Produit produit){
         Panier panier = Tools.panierDansList(listPanier, idPanier);
-        PanierDAO panierDAO = new PanierDAO(conn);
         produit.createIdProduit();
         panier.addProduct(produit);
-        //panierDAO.addProductInPanier(panier, produit);
         return true;
     }
 

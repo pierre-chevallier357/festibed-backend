@@ -29,6 +29,19 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         return id;
     }
 
+    public int createTempUser(){
+        conn = TheConnection.getInstance();
+        DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);
+        Festivalier festivalier = new Festivalier();
+        int id = -1;
+        if(((FestivalierDAO) festivalierDAO).createTempFestivalier()){
+            id =  ((FestivalierDAO) festivalierDAO).getIdFestivalier(festivalier.getEmail());
+            festivalier.setIdUser(id);
+            listUserConnect.add(festivalier);
+        }
+        return id;
+    }
+
     @Override
     public Festivalier getUser(int id){
 

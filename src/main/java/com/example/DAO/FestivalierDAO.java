@@ -36,6 +36,28 @@ public class FestivalierDAO extends DAO<Festivalier> {
 		}
 		return res;
 	}
+
+	public boolean createTempFestivalier() {
+		
+		boolean res = false;
+
+		try {
+			
+			PreparedStatement prepare = this.connect.prepareStatement(
+					"insert into Festivalier(nom,email)"+
+					"values(?,?)"
+					);
+			
+			prepare.setString(1, "tempUser");
+			prepare.setString(2, "tempEmail");
+
+			prepare.executeUpdate();
+			res = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 		
 	public Festivalier read(int id) {
 		
@@ -171,5 +193,7 @@ public class FestivalierDAO extends DAO<Festivalier> {
 
 		return id;
 	}
+
+
     
 }

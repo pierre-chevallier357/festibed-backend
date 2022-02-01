@@ -31,6 +31,13 @@ public class RunUser {
       return festivalier;
     }
 
+    @GetMapping("/create-Temp-user/")
+    Integer createFestivalier() {
+      requestUser = new AppRequestFestivalier();
+      int id = ((AppRequestFestivalier) requestUser).createTempUser();      
+      return id;
+    }
+
     @GetMapping("/create-Festivalier/{nom}&{email}")
     Integer createFestivalier(@PathVariable(value = "nom") String nom, @PathVariable(value = "email") String email) {
       requestUser = new AppRequestFestivalier();

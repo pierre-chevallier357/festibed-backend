@@ -22,16 +22,17 @@ public class PanierDAO extends DAO<Panier> {
 		try {
             for(Produit produit : obj.getProductInPanier()){
                 PreparedStatement prepare = this.connect.prepareStatement(
-					"insert into Panier(idPanier,idProduit,HeureDernierProduit,nbPass)"+
-					"values(?,?,?,?)"
+					"insert into Panier(idPanier, idProduit, HeureDernierProduit, nbPass, idEtablissement, idFestival, idFestivalier)"+
+					"values(?,?,?,?,?,?,?)"
 					);
 			
 			    prepare.setInt(1, obj.getIdPanier());
                 prepare.setInt(2, produit.getIdProduit());
                 prepare.setString(3, "00h00");
                 prepare.setInt(4, produit.getNbPass());
-                
-
+                prepare.setInt(5, produit.getIdEtablissement());
+                prepare.setInt(6, produit.getIdFestival());
+                prepare.setInt(7, produit.getIdFestivalier());
 			    ins = prepare.executeUpdate();
 
             }
@@ -59,8 +60,10 @@ public class PanierDAO extends DAO<Panier> {
 				while(rs.next()) {
                     panier.setIdPanier(rs.getInt("idPanier"));
                     produit.setIdProduit(rs.getInt("idProduit"));
-                    produit = getProduit(produit.getIdProduit());
                     produit.setNbPass(rs.getInt("nbPass"));
+                    produit.setIdEtablissement(rs.getInt("idEtablissement"));
+                    produit.setIdFestival(rs.getInt("idFestival"));
+                    produit.setIdFestivalier(rs.getInt("idFestivalier"));
                     panier.addProduct(produit);
 				}
 				
@@ -135,4 +138,32 @@ public class PanierDAO extends DAO<Panier> {
         }
         return produit;
     }
+
+
+	public boolean addProductInPanier(Panier panier, Produit produit) {	
+
+			int ins = 0;
+
+		try {
+			PreparedStatement prepare = this.connect.prepareStatement(
+				"insert into Panier(idPanier, idProduit, HeureDernierProduit, nbPass, idEtablissement, idFestival, idFestivalier)"+
+				"values(?,?,?,?,?,?,?)"
+				);
+		
+			prepare.setInt(1, panier.getIdPanier());
+			prepare.setInt(2, produit.getIdProduit());
+			prepare.setString(3, "00h00");
+			prepare.setInt(4, produit.getNbPass());
+			prepare.setInt(5, produit.getIdEtablissement());
+			prepare.setInt(6, produit.getIdFestival());
+			prepare.setInt(7, produit.getIdFestivalier());
+			ins = prepare.executeUpdate();
+			
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ins > 0;
+	}
 }
