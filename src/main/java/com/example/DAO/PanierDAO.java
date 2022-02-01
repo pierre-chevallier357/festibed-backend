@@ -127,7 +127,6 @@ public class PanierDAO extends DAO<Panier> {
                 produit.setIdEtablissement(rs.getInt("idEtablissement"));
                 produit.setIdFestival(rs.getInt("idFestival"));
                 produit.setIdFestivalier(rs.getInt("idFestivalier"));
-                //produit.setNbPass(rs.getInt("nbPass"));
             }
 
         }catch (SQLException e) {
