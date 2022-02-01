@@ -123,7 +123,7 @@ public class FestivalDAO extends DAO<Festival> {
 		
 		try {
 			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM Festival WHERE VILLE = '"+ville+"'";
+			String q = 	"SELECT * FROM Festival WHERE VILLE LIKE '%"+ville+"%'";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				festivalList.add(ToolsFestival.readFestivalInformation(rs));
@@ -220,7 +220,7 @@ public class FestivalDAO extends DAO<Festival> {
 		
 		try {
 			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM Festival WHERE nom = '"+nom+"'";
+			String q = 	"SELECT * FROM Festival WHERE nom LIKE '%"+nom+"%'";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				festivalList.add(ToolsFestival.readFestivalInformation(rs));

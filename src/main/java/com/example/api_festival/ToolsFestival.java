@@ -13,24 +13,12 @@ public abstract class ToolsFestival {
 		try{
 			festival.setNom(rs.getString("Nom"));
 			festival.setDomaine(rs.getString("Domaine"));
-			try{
-				festival.setComplementDomaine(rs.getString("Complement_Domaine"));
-			}catch(SQLException e){
-				festival.setComplementDomaine("");
-			}
+			festival.setComplementDomaine(rs.getString("Complement_Domaine"));
 			festival.setMoisIndicatif(rs.getString("MoisIndicatif"));
 			festival.setDuree(rs.getInt("Duree"));
 			festival.setIdFestival(rs.getInt("IDFestival"));
-			try{
-				festival.setCommune(rs.getString("ville"));
-			}catch(SQLException e){
-				festival.setCommune("Ville inconnue");
-			}
-			try{
-				festival.setDepartement(rs.getString("departement"));
-			}catch(SQLException e){
-				festival.setDepartement("Departement inconnu");
-			}
+			festival.setCommune(rs.getString("ville"));
+			festival.setDepartement(rs.getString("departement"));
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -47,33 +35,11 @@ public abstract class ToolsFestival {
 			festival.setMoisIndicatif(rs.getString("MoisIndicatif"));
 			festival.setDuree(rs.getInt("Duree"));
 			festival.setIdFestival(rs.getInt("IDFestival"));
-			
-			try{
-				festival.setCodePostal(rs.getInt("codePostal"));
-			}catch(SQLException e){
-				festival.setCodePostal(-1);
-			}
-			try{
-				festival.setCommune(rs.getString("ville"));
-			}catch(SQLException e){
-				festival.setCommune("Ville inconnue");
-			}
-			try{
-				festival.setCoordonnesGPS(rs.getString("coordonnees"));
-			}catch(SQLException e){
-				festival.setCoordonnesGPS("Coordonnee inconnue");
-			}			
-			try{
-				festival.setDepartement(rs.getString("departement"));
-			}catch(SQLException e){
-				festival.setDepartement("Departement inconnu");
-			}
-			
-			try{
-				festival.setRegion(rs.getString("region"));
-			}catch(SQLException e){
-				festival.setRegion("region inconnue");
-			}
+			festival.setCodePostal(rs.getInt("codePostal"));
+			festival.setCommune(rs.getString("ville"));
+			festival.setCoordonnesGPS(rs.getString("coordonnees"));
+			festival.setDepartement(rs.getString("departement"));
+			festival.setRegion(rs.getString("region"));
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

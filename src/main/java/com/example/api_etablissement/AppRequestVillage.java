@@ -33,17 +33,14 @@ public class AppRequestVillage implements AppInterfaceEtablissement {
         conn = TheConnection.getInstance();
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        Etablissement etablissement = etablissementDAO.read(id);
-
-        return etablissement;
+        return etablissementDAO.read(id);
     }
 
     @Override
     public boolean updateEtablissement(Etablissement etablissement) {
         conn = TheConnection.getInstance();
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        boolean res = etablissementDAO.update((Etablissement) etablissement); 
-        return res;
+        return etablissementDAO.update(etablissement);
     }
 
     @Override
@@ -52,9 +49,7 @@ public class AppRequestVillage implements AppInterfaceEtablissement {
         conn = TheConnection.getInstance();
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtabByType(idFestival, "village");
-
-        return list;
+        return ((EtablissementDAO) etablissementDAO).listEtabByType(idFestival, type);
         }
     
 }

@@ -40,8 +40,7 @@ public class AppRequestEtablissement implements AppInterfaceEtablissement{
     public boolean updateEtablissement(Etablissement etablissement) {
         conn = TheConnection.getInstance();
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        boolean res = etablissementDAO.update((Etablissement) etablissement); 
-        return res;
+        return etablissementDAO.update(etablissement); 
     }
 
     @Override

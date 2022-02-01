@@ -37,17 +37,18 @@ public class Main {
 
         System.out.println("---------------------AU REVOIR --------------------------");
         
-       
+       */
         DAO<Festival> festivalDAO = new FestivalDAO(conn);
 
         System.out.println("---------------------Le Festival par ville  --------------------------");
         
        
-        ArrayList<Festival> listFesti = ((FestivalDAO) festivalDAO).listFestivalReachByVille("REIMS");
+        ArrayList<Festival> listFesti = ((FestivalDAO) festivalDAO).searchFestivalsByVille("REIMS");
 
         for (Festival festi : listFesti) {
             System.out.println(festi.getNom()); 
         }
+        /*
         
         System.out.println("---------------------Le Festival par departement  --------------------------");
         
@@ -118,6 +119,7 @@ public class Main {
 			
 			e.printStackTrace();
 		}*/
+        /*
 
         AppInterfacePanier panier = new AppRequestPanier();
 
@@ -145,7 +147,7 @@ public class Main {
             for(Produit produit3 : panier2.getProductInPanier()){
                 System.out.println(produit3.getIdFestivalier());
             }
-        }/*
+        }
         
         DAO<Festival> festivalDAO = new FestivalDAO(conn);
 

@@ -41,8 +41,8 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
     public boolean updateEtablissement(Etablissement etablissement) {
         conn = TheConnection.getInstance();
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        boolean res = etablissementDAO.update((Etablissement) etablissement); 
-        return res;
+        return etablissementDAO.update(etablissement); 
+       
     }
 
     @Override
@@ -51,9 +51,7 @@ public class AppRequestCamping implements AppInterfaceEtablissement {
         conn = TheConnection.getInstance();
 
         DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
-        ArrayList<Etablissement> list = ((EtablissementDAO) etablissementDAO).listEtabByType(idFestival, "camping");
-
-        return list;
+        return ((EtablissementDAO) etablissementDAO).listEtabByType(idFestival, "camping");
     }
 
 }

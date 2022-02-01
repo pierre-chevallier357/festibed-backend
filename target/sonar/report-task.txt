@@ -2,5 +2,5 @@ projectKey=festibed:backend
 serverUrl=http://im2ag-sonar.u-ga.fr:9000
 serverVersion=9.1.0.47736
 dashboardUrl=http://im2ag-sonar.u-ga.fr:9000/dashboard?id=festibed%3Abackend
-ceTaskId=AX6wRbdFQ6jlgN02IWyt
-ceTaskUrl=http://im2ag-sonar.u-ga.fr:9000/api/ce/task?id=AX6wRbdFQ6jlgN02IWyt
+ceTaskId=AX6xzy3BQ6jlgN02IWyz
+ceTaskUrl=http://im2ag-sonar.u-ga.fr:9000/api/ce/task?id=AX6xzy3BQ6jlgN02IWyz

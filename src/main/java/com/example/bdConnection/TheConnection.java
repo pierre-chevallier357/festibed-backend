@@ -11,8 +11,7 @@ public class TheConnection {
 
 		try {
 
-			// Enregistrement du driver Oracleh
-			System.out.print("Loading Oracle driver... ");
+			System.out.println("Loading Oracle driver... ");
 			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
 			System.out.println("loaded");
 

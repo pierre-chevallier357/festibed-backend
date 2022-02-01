@@ -125,7 +125,7 @@ public class EtablissementDAO extends DAO<Etablissement> {
 		
 		try {
 			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM ETABLISSEMENT WHERE NOMETAB = '"+name+"' and TYPE = '"+type+"'";//+"' and idFestival="+idFestival;
+			String q = 	"SELECT * FROM ETABLISSEMENT WHERE NOMETAB LIKE '%"+name+"%' and TYPE = '"+type+"'";//+"' and idFestival="+idFestival;
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				
@@ -165,7 +165,7 @@ public class EtablissementDAO extends DAO<Etablissement> {
 		
 		try {
 			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM ETABLISSEMENT WHERE VILLE = '"+ville+"' and TYPE = '"+type+"'";//+"' and idFestival="+idFestival;
+			String q = 	"SELECT * FROM ETABLISSEMENT WHERE VILLE LIKE '%"+ville+"%' and TYPE = '"+type+"'";//+"' and idFestival="+idFestival;
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				
