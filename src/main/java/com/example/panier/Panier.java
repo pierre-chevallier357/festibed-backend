@@ -59,5 +59,9 @@ public class Panier {
     public ArrayList<Produit> getProductInPanier(){
         return listProduit;
     }
+
+    public Produit getFirstProductInPanier(){
+        return listProduit.get(0);
+    }
     
 }
