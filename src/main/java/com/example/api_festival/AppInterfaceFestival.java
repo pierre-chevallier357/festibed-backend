@@ -10,5 +10,7 @@ public interface AppInterfaceFestival {
 
     public boolean updateFestival(Festival festival);
 
-    public ArrayList<Festival> getListOfFestival(int typeOfReach, String searchElement);
+    public ArrayList<Festival> getListOfFestival(String nom, String ville, String type, String departement, String mois);
+    
+    public ArrayList<Festival> getListOfHundredFestival();
 }

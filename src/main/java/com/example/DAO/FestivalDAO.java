@@ -265,4 +265,82 @@ public class FestivalDAO extends DAO<Festival> {
 		}
 		return festivalList;
     }
+
+
+
+	public ArrayList<Festival> searchFestivals(String nom, String ville, String type, String departement, String mois) {	
+		ArrayList<Festival> festivalList = new ArrayList<>();
+		boolean isFirst = true;
+		
+		try {
+			Statement myStm = this.connect.createStatement(this.type,this.mode);
+			String q = 	"SELECT * FROM Festival WHERE";
+
+			if(!nom.equals("null")){
+				if(isFirst){
+					q += " NOM LIKE '%"+nom+"%'";
+					isFirst = false;
+				}
+			}
+			if(!ville.equals("null")){
+				if(isFirst){
+					isFirst = false;
+
+				}
+				else{
+					q+= " AND ";
+				}
+				q += " VILLE LIKE '%"+ville+"%'";
+			}
+			if(!type.equals("null")){
+				if(isFirst){
+					isFirst = false;
+
+				}
+				else{
+					q+= " AND ";
+				}
+				q += " TYPE = '"+type+"'";
+			}
+			if(!type.equals("null")){
+				if(isFirst){
+					isFirst = false;
+
+				}
+				else{
+					q+= " AND ";
+				}
+				q += " TYPE = '"+type+"'";
+			}
+			if(!departement.equals("null")){
+				if(isFirst){
+					isFirst = false;
+
+				}
+				else{
+					q+= " AND ";
+				}
+				q += " departement LIKE '%"+departement+"%'";
+			}
+			if(!mois.equals("null")){
+				if(isFirst){
+					isFirst = false;
+
+				}
+				else{
+					q+= " AND ";
+				}
+				q += " mois LIKE '%"+mois+"%'";
+			}
+			ResultSet rs = myStm.executeQuery(q);
+			while(rs.next()) {
+				festivalList.add(ToolsFestival.readFestivalInformation(rs));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return festivalList;
+	
+	}
 }

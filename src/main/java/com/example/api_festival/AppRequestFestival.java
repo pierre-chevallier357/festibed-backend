@@ -36,41 +36,18 @@ public class AppRequestFestival implements AppInterfaceFestival{
     }
 
     @Override
-    public ArrayList<Festival> getListOfFestival(int typeOfReach, String searchElement) {
+    public ArrayList<Festival> getListOfFestival(String nom, String ville, String type, String departement, String mois) {
         conn = TheConnection.getInstance();
         DAO<Festival> festivalDAO = new FestivalDAO(conn);       
-        ArrayList<Festival> list;
-        switch (typeOfReach){
+        ArrayList<Festival> list = ((FestivalDAO) festivalDAO).searchFestivals( nom, ville,  type,  departement, mois);            
+        return list;
+    }
 
-            case 1 : 
-                list  = ((FestivalDAO) festivalDAO).searchFestivalsByName(searchElement);
-                break;
-
-            case 2 :
-                list  = ((FestivalDAO) festivalDAO).searchFestivalsByVille(searchElement);
-                break;
-
-            case 3 :
-                list  = ((FestivalDAO) festivalDAO).searchFestivalsByDepartement(searchElement);
-                break;
-
-            case 4 :
-                list  = ((FestivalDAO) festivalDAO).searchFestivalsByType(searchElement);
-                break;
-            
-            case 5 :
-                list  = ((FestivalDAO) festivalDAO).searchFestivalsByTypeAndComplement(searchElement);
-                break;
-            case 6 :
-                list  = ((FestivalDAO) festivalDAO).searchHundredFestivals();
-                break;
-            case 7:
-                list = ((FestivalDAO) festivalDAO).searchByMonth(searchElement);
-            default :
-                list = new ArrayList<>();
-                break;
-
-        }
+    @Override
+    public ArrayList<Festival> getListOfHundredFestival() {
+        conn = TheConnection.getInstance();
+        DAO<Festival> festivalDAO = new FestivalDAO(conn);       
+        ArrayList<Festival> list = ((FestivalDAO) festivalDAO).searchHundredFestivals();            
         return list;
     }
 

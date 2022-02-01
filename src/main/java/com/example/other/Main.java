@@ -8,6 +8,8 @@ import com.example.DAO.*;
 import com.example.api_festival.AppInterfaceFestival;
 import com.example.api_festival.AppRequestFestival;
 import com.example.api_festival.Festival;
+import com.example.api_utilisateur.AppInterfaceUser;
+import com.example.api_utilisateur.AppRequestFestivalier;
 import com.example.etablissement.*;
 import com.example.panier.AppInterfacePanier;
 import com.example.panier.AppRequestPanier;
@@ -119,7 +121,7 @@ public class Main {
 			
 			e.printStackTrace();
 		}*/
-        
+        /*
 
         AppInterfacePanier panier = new AppRequestPanier();
 
@@ -137,8 +139,12 @@ public class Main {
             System.out.println(prod.getIdFestivalier());
         }
 
+    }*/
+    AppInterfaceUser userReq =  new AppRequestFestivalier();
+
+    int id = ((AppRequestFestivalier) userReq).createTempUser();
+    System.out.println(id);     
+
+
     }
-
-
-
 }

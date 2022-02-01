@@ -30,40 +30,14 @@ public class RunFestival {
       return id;
     }
 
-    @GetMapping("/search-festival-name/{nom}")
-    public ArrayList<Festival> festivalSearchByNom(@PathVariable(value = "nom") String nom) {
-      return requestFestival.getListOfFestival(1, nom);
-    }
-    
-    @GetMapping("/search-festival-ville/{ville}")
-    public ArrayList<Festival> festivalSearchByVille(@PathVariable(value = "ville") String ville) {
-      return requestFestival.getListOfFestival(2, ville);
-    }
-
-    @GetMapping("/search-festival-departement/{departement}")
-    public ArrayList<Festival> festivalSearchByDepartement(@PathVariable(value = "departement") String departement) {
-      return requestFestival.getListOfFestival(3, departement);
-    }
-
-    @GetMapping("/search-festival-type/{type}")
-    public ArrayList<Festival> festivalSearchByType(@PathVariable(value = "type") String type) {
-      return requestFestival.getListOfFestival(4, type);
-    }
-
-    @GetMapping("/search-festival-type-complement/{type}&{complement}")
-    public ArrayList<Festival> festivalSearchByTypeAndComplement(@PathVariable(value = "type") String type, @PathVariable(value = "type") String complement) {
-
-      return requestFestival.getListOfFestival(5, type+"&"+complement);
+    @GetMapping("/search-festival-name/{nom}&{ville}&{type}&{departement}&{mois}")
+    public ArrayList<Festival> festivalSearchByNom(@PathVariable(value = "nom") String nom, @PathVariable(value = "ville") String ville, @PathVariable(value = "type") String type ,@PathVariable(value = "departement") String departement, @PathVariable(value = "mois") String mois) {
+      return requestFestival.getListOfFestival(nom, ville, type, departement, mois);
     }
 
     @GetMapping("/search-all-festival/")
     public ArrayList<Festival> festivalSearchAll() {
-      return requestFestival.getListOfFestival(6, "null");
-    }
-
-    @GetMapping("/search-festival-month/{mois}")
-    public ArrayList<Festival> festivalSearchByMonth(@PathVariable(value = "mois") String mois) {
-      return requestFestival.getListOfFestival(7, mois);
+      return requestFestival.getListOfHundredFestival();
     }
 
     
