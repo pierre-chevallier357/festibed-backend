@@ -327,7 +327,6 @@ public class FestivalDAO extends DAO<Festival> {
 			while(rs.next()) {
 				festivalList.add(ToolsFestival.readFestivalInformation(rs));
 			}
-			System.out.println(q);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

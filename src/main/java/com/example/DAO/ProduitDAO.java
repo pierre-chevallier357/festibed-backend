@@ -1,6 +1,8 @@
 package com.example.DAO;
 
 import java.sql.Connection;
+import java.text.DateFormat;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,17 +23,19 @@ public class ProduitDAO extends DAO<Produit> {
 		int ins = 0;
 
 		try {
-           
             PreparedStatement prepare = this.connect.prepareStatement(
-                "insert into Panier(idFestivalier, idEtablissement, idFestival, nbPass, HeureDernierAjout)"+
-					"values(?,?,?,?,?,?,?)"
+                "insert into Panier(idFestivalier, idEtablissement, idFestival, nbPass, HEUREDERNIEREMODIF)"+
+					"values(?,?,?,?,?)"
                 );
         
             prepare.setInt(1, obj.getIdFestivalier());
             prepare.setInt(2, obj.getIdEtablissement());
             prepare.setInt(3, obj.getIdFestival());
             prepare.setInt(4, obj.getNbPass());
-			prepare.setString(5, "00h00");
+			Date time = new Date(ins);
+
+			DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+			prepare.setString(5, shortDateFormat.format(time));
             
 
             ins = prepare.executeUpdate();

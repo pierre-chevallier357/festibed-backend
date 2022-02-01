@@ -31,31 +31,6 @@ public class Panier {
         this.idFestivalier = idFestivalier;
     }
 
-
-
-
-    /*public Panier factoryPanier(ArrayList<Panier> listPanier, Integer idFestivalier){
-        
-        System.out.println("here");
-        boolean res = false;
-        Panier resPanier;
-        
-        for(Panier panier : listPanier){
-            if(panier.getIdFestivalier().equals(idFestivalier)){
-                resPanier = panier;
-                res = true;
-            }
-        }
-        if(res == false){
-            resPanier = new Panier();
-            resPanier.setIdFestivalier(idFestivalier);
-        }
-        else{
-            resPanier = null;
-        }
-        return resPanier;
-    }*/
-
     public ArrayList<Produit> getProductInPanier(){
         return listProduit;
     }

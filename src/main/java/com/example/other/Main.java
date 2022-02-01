@@ -121,7 +121,7 @@ public class Main {
 			
 			e.printStackTrace();
 		}*/
-        /*
+        
 
         AppInterfacePanier panier = new AppRequestPanier();
 
@@ -138,14 +138,14 @@ public class Main {
         for (Produit prod : produitList){
             System.out.println(prod.getIdFestivalier());
         }
-
-    }
+/*
+    
     AppInterfaceUser userReq =  new AppRequestFestivalier();
 
     int id = ((AppRequestFestivalier) userReq).createTempUser();
     System.out.println(id);     
 
-*/
+
     DAO<Festival> festivalDAO = new FestivalDAO(conn);
     String nom ="null",  ville="BEAUMONT DE PERTUIS",  type="null",  departement="null",  mois="null";
 
@@ -154,6 +154,7 @@ public class Main {
         listF =  ((FestivalDAO) festivalDAO).searchFestivals( nom,  ville,  type,  departement,  mois);
         for(Festival fes : listF){
             System.out.println(fes.getNom()+" type : "+fes.getDepartement());
-        }
+        }*/
     }
+
 }
