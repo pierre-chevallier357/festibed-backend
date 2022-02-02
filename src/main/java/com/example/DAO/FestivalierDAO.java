@@ -203,7 +203,6 @@ public class FestivalierDAO extends DAO<Festivalier> {
 			Statement myStm = this.connect.createStatement();
 			String supAdresse = "delete from Festivalier where IDFestivalier="+id;
 			myStm.executeUpdate(supAdresse);
-			System.out.println(res);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
