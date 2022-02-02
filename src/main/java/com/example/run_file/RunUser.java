@@ -73,6 +73,7 @@ public class RunUser {
     @GetMapping("/delete-Festivalier/{idFestivalier}")
     Integer deleteFestivalier(@PathVariable(value = "idFestivalier") Integer id) {
       requestUser = new AppRequestFestivalier();
+      
 
       System.out.println(id);
       ((AppRequestFestivalier) requestUser).deleteUser(id);   

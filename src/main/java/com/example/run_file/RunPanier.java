@@ -39,5 +39,10 @@ public class RunPanier {
       return ((AppRequestPanier) requestPanier).deleteInPanier(idFestivalier, idFestival, idEtab);
     }
 
+    @GetMapping("/empty-panier/{idFestivalier}")
+    public boolean EmptyPanier(@PathVariable(value = "idFestivalier") Integer idFestivalier) {
+      return ((AppRequestPanier) requestPanier).delete(idFestivalier);
+    }
+
     
 }

@@ -165,6 +165,23 @@ public class ProduitDAO extends DAO<Produit> {
 		return del > 0;
 	}
 
+	public boolean deleteId(Integer idFestivalier) {
+		
+		int del = 0;
+		
+		try {
+			Statement myStm = this.connect.createStatement();
+			String supFesti = "delete from Produit where IDFestivalier="+idFestivalier;
+			del = myStm.executeUpdate(supFesti);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return del > 0;
+	}
+
 
 	
 }
