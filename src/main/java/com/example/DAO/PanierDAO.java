@@ -27,7 +27,6 @@ public class PanierDAO extends DAO<Panier> {
 					);
 			
 			    prepare.setInt(1, obj.getIdPanier());
-                prepare.setInt(2, produit.getIdProduit());
                 prepare.setString(3, "00h00");
                 prepare.setInt(4, produit.getNbPass());
                 prepare.setInt(5, produit.getIdEtablissement());
@@ -58,12 +57,11 @@ public class PanierDAO extends DAO<Panier> {
 				
 				ResultSet rs = myStm.executeQuery(q);
 				while(rs.next()) {
-                    panier.setIdPanier(rs.getInt("idPanier"));
-                    produit.setIdProduit(rs.getInt("idProduit"));
-                    produit.setNbPass(rs.getInt("nbPass"));
-                    produit.setIdEtablissement(rs.getInt("idEtablissement"));
-                    produit.setIdFestival(rs.getInt("idFestival"));
+					
                     produit.setIdFestivalier(rs.getInt("idFestivalier"));
+					produit.setIdFestival(rs.getInt("idFestival"));
+                    produit.setIdEtablissement(rs.getInt("idEtablissement"));
+                    produit.setNbPass(rs.getInt("nbPass"));
                     panier.addProduct(produit);
 				}
 				
@@ -126,7 +124,6 @@ public class PanierDAO extends DAO<Panier> {
             String q = 	"SELECT * FROM Produit WHERE idProduit = "+idProduit;
             ResultSet rs = myStm.executeQuery(q);
             if(rs.first()){
-                produit.setIdProduit(rs.getInt("idProduit"));
                 produit.setIdEtablissement(rs.getInt("idEtablissement"));
                 produit.setIdFestival(rs.getInt("idFestival"));
                 produit.setIdFestivalier(rs.getInt("idFestivalier"));
@@ -151,7 +148,6 @@ public class PanierDAO extends DAO<Panier> {
 				);
 		
 			prepare.setInt(1, panier.getIdPanier());
-			prepare.setInt(2, produit.getIdProduit());
 			prepare.setString(3, "00h00");
 			prepare.setInt(4, produit.getNbPass());
 			prepare.setInt(5, produit.getIdEtablissement());

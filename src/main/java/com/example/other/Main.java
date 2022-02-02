@@ -125,16 +125,16 @@ public class Main {
 */
         AppInterfacePanier panier = new AppRequestPanier();
 
-        Produit produit = new Produit();
+       /* Produit produit = new Produit();
         int idFestivalier = 1;
         produit.createIdProduit();
         produit.setIdEtablissement(1);
         produit.setIdFestival(1186);
         produit.setIdFestivalier(1);
-        produit.setNbPass(1);
-        //panier.addProduct(idFestivalier, produit);
+        produit.setNbPass(1);*/
+        panier.addProduct(194, 1, 243,1);
 
-        ArrayList<Produit> produitList = panier.getProduct(idFestivalier);
+        ArrayList<Produit> produitList = panier.getProduct(194);
         for (Produit prod : produitList){
             System.out.println(prod.getIdFestivalier());
         }

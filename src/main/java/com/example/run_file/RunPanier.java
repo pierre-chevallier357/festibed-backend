@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,11 +22,11 @@ public class RunPanier {
     static Connection conn;
     AppInterfacePanier requestPanier = new AppRequestPanier();
 
-    @GetMapping("/add-product/{idFestivalier}&{idFestival}&{idEtablissment}&{nbPass}")
-    public boolean addProduct(@PathVariable(value = "idFestivalier") Integer idFestivalier, @PathVariable(value = "idFestival") Integer idFestival, @PathVariable(value = "idEtablissement") Integer idEtablissement, @PathVariable(value = "nbPass") int nbPass) {
+    @GetMapping("/add-product/{idFestivalier}&{idFestival}&{idEtab}&{nbPass}")
+    public boolean addProduct(@PathVariable(value = "idFestivalier") Integer idFestivalier, @PathVariable(value = "idFestival") Integer idFestival, @PathVariable(value = "idEtab") Integer idEtab, @PathVariable(value = "nbPass") int nbPass) {
       boolean res = true;
-      System.out.println(idFestivalier+ "-----"+ idEtablissement);
-      res = requestPanier.addProduct(idFestivalier, idFestival, idEtablissement, nbPass);
+      System.out.println(idFestivalier+ "-----"+ idEtab);
+      res = requestPanier.addProduct(idFestivalier, idFestival, idEtab, nbPass);
       return res;
     }
 
