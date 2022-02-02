@@ -55,6 +55,19 @@ public class AppRequestEtablissement implements AppInterfaceEtablissement{
         
     }
 
+    
+
+    public ArrayList<Etablissement> getListOfEtablissementByVille(Integer idFestival,String ville) {
+        
+        conn = TheConnection.getInstance();
+
+        DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
+      
+        return ((EtablissementDAO) etablissementDAO).searchEtablissementByVille(idFestival, ville);   
+
+        
+    }
+
     public Etablissement getEtabById(Integer idEtab){
 
         conn = TheConnection.getInstance();

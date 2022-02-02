@@ -189,6 +189,26 @@ public class EtablissementDAO extends DAO<Etablissement> {
 	
 	}
 
-
+	public ArrayList<Etablissement> searchEtablissementByVille(Integer idFestival, String ville) {	
+		ArrayList<Etablissement> etabList = new ArrayList<>();
+		Statement myStm;
+			 
+			Etablissement etablissement = null;
+			
+			try {
+				String q = 	"SELECT * FROM ETABLISSEMENT " +
+						"WHERE VILLE ="+ville;
+				myStm = this.connect.createStatement(this.type,this.mode);
+				
+				ResultSet rs = myStm.executeQuery(q);
+				while(rs.next()) {
+					etablissement = ToolsEtab.getAllInfo(rs);
+					etabList.add(etablissement);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return etabList;
+		}
 
 }

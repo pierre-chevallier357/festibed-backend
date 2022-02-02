@@ -24,8 +24,13 @@ public class RunEtablissement {
     AppInterfaceEtablissement requestEtab = new AppRequestEtablissement();  
 
     @GetMapping("/search-etablissement/{idFestival}&{nom}&{type}&{ville}")
-    public ArrayList<Etablissement> etablissementSearchByNom(@PathVariable(value = "idFestival") Integer idFestival, @PathVariable(value = "nom") String nom, @PathVariable(value = "type") String type, @PathVariable(value = "ville") String ville) {
+    public ArrayList<Etablissement> etablissementSearch(@PathVariable(value = "idFestival") Integer idFestival, @PathVariable(value = "nom") String nom, @PathVariable(value = "type") String type, @PathVariable(value = "ville") String ville) {
       return requestEtab.getListOfEtablissement(idFestival, nom, type, ville);
+    }
+
+    @GetMapping("/search-etablissement-ByVille/{idFestival}&{nom}&{type}&{ville}")
+    public ArrayList<Etablissement> etablissementSearchByVille(@PathVariable(value = "idFestival") Integer idFestival, @PathVariable(value = "nom") String nom, @PathVariable(value = "type") String type, @PathVariable(value = "ville") String ville) {
+      return ((AppRequestEtablissement) requestEtab).getListOfEtablissementByVille(idFestival, ville);
     }
 
     @GetMapping("/get-etablissement/{idEtab}")
