@@ -65,7 +65,19 @@ public class FestivalDAO extends DAO<Festival> {
 				
 				ResultSet rs = myStm.executeQuery(q);
 				while(rs.next()) {
-					festival = ToolsFestival.readFestival(rs);
+					int i = rs.getInt("Capacite");
+					int j = rs.getInt("NBPlaceReservees");
+					if(i != 0 && j  != 0){
+						if(j>i){
+							rs.next();
+						}
+						else {
+							festival = ToolsFestival.readFestival(rs);
+						}
+					}else {
+						festival = ToolsFestival.readFestival(rs);
+					}
+					
 				}
 				
 			}
