@@ -60,7 +60,7 @@ public class FestivalDAO extends DAO<Festival> {
 			
 			try {
 				String q = 	"SELECT * FROM Festival " +
-						"WHERE IDFestival="+id;
+						"WHERE IDFestival="+id+" AND IDFESTIVAL NOT IN (SELECT IDFESTIVAL FROM FESTIVAL WHERE CAPACITE = NBPLACESRESERVEES)";
 				myStm = this.connect.createStatement(this.type,this.mode);
 				
 				ResultSet rs = myStm.executeQuery(q);
@@ -180,7 +180,7 @@ public class FestivalDAO extends DAO<Festival> {
 		
 		try {
 			Statement myStm = this.connect.createStatement(this.type,this.mode);
-			String q = 	"SELECT * FROM Festival WHERE idFestival < 101";
+			String q = 	"SELECT * FROM Festival WHERE idFestival < 101 AND IDFESTIVAL NOT IN (SELECT IDFESTIVAL FROM FESTIVAL WHERE CAPACITE = NBPLACESRESERVEES)";
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				festivalList.add(ToolsFestival.readFestivalInformation(rs));
@@ -248,6 +248,14 @@ public class FestivalDAO extends DAO<Festival> {
 				}
 				q += " moisDebut LIKE '%"+mois+"%'";
 			}
+			if(isFirst){
+				isFirst = false;
+			}
+			else{
+				q+= " AND ";
+			}
+			q += " IDFESTIVAL NOT IN (SELECT IDFESTIVAL FROM FESTIVAL WHERE CAPACITE = NBPLACESRESERVEES)";
+
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				festivalList.add(ToolsFestival.readFestivalInformation(rs));
