@@ -66,7 +66,7 @@ public class FestivalDAO extends DAO<Festival> {
 				ResultSet rs = myStm.executeQuery(q);
 				while(rs.next()) {
 					int i = rs.getInt("Capacite");
-					int j = rs.getInt("NBPlaceReservees");
+					int j = rs.getInt("NBPlacesReservees");
 					if(i != 0 && j  != 0){
 						if(j>=i){
 							rs.next();
@@ -263,7 +263,7 @@ public class FestivalDAO extends DAO<Festival> {
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				int i = rs.getInt("Capacite");
-				int j = rs.getInt("NBPlaceReservees");
+				int j = rs.getInt("NBPlacesReservees");
 				if(i != 0 && j  != 0){
 					if(j>=i){
 						rs.next();
