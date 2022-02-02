@@ -66,11 +66,10 @@ public class FestivalDAO extends DAO<Festival> {
 				ResultSet rs = myStm.executeQuery(q);
 				while(rs.next()) {
 					int i = rs.getInt("Capacite");
-					int j = rs.getInt("NBPlacesReservees");
+					int j = rs.getInt("NBPlaceReservees");
 					if(i != 0 && j  != 0){
-						
-					System.out.println("capacite :"+i+" NbplaceReserver :"+j );
-						if(j>=i){
+						if(j>i){
+							rs.next();
 						}
 						else {
 							festival = ToolsFestival.readFestival(rs);
@@ -263,19 +262,7 @@ public class FestivalDAO extends DAO<Festival> {
 			}
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
-				int i = rs.getInt("Capacite");
-				int j = rs.getInt("NBPlacesReservees");
-				if(i != 0 && j  != 0){
-					System.out.println("capacite :"+i+" NbplaceReserver :"+j );
-					if(j>=i){
-					}
-					else {
-						festivalList.add(ToolsFestival.readFestivalInformation(rs));
-					}
-				}else {
-					festivalList.add(ToolsFestival.readFestivalInformation(rs));
-				}
-				
+				festivalList.add(ToolsFestival.readFestivalInformation(rs));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
