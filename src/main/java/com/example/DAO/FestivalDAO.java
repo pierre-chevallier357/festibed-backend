@@ -262,7 +262,19 @@ public class FestivalDAO extends DAO<Festival> {
 			}
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
-				festivalList.add(ToolsFestival.readFestivalInformation(rs));
+				int i = rs.getInt("Capacite");
+				int j = rs.getInt("NBPlaceReservees");
+				if(i != 0 && j  != 0){
+					if(j>i){
+						rs.next();
+					}
+					else {
+						festivalList.add(ToolsFestival.readFestivalInformation(rs));
+					}
+				}else {
+					festivalList.add(ToolsFestival.readFestivalInformation(rs));
+				}
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
