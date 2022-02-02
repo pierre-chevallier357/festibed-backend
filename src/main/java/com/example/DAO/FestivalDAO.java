@@ -68,6 +68,8 @@ public class FestivalDAO extends DAO<Festival> {
 					int i = rs.getInt("Capacite");
 					int j = rs.getInt("NBPlacesReservees");
 					if(i != 0 && j  != 0){
+						
+					System.out.println("capacite :"+i+" NbplaceReserver :"+j );
 						if(j>=i){
 							rs.next();
 						}
@@ -265,6 +267,7 @@ public class FestivalDAO extends DAO<Festival> {
 				int i = rs.getInt("Capacite");
 				int j = rs.getInt("NBPlacesReservees");
 				if(i != 0 && j  != 0){
+					System.out.println("capacite :"+i+" NbplaceReserver :"+j );
 					if(j>=i){
 						rs.next();
 					}
