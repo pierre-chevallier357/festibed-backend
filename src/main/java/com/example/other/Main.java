@@ -145,7 +145,7 @@ public class Main {
     int id = ((AppRequestFestivalier) userReq).createTempUser();
     System.out.println(id);     
 
-*/
+*/ /*
     DAO<Festival> festivalDAO = new FestivalDAO(conn);
     String nom ="LÉZART VERT",  ville="null",  type="null",  departement="null",  mois="null";
 
@@ -164,6 +164,18 @@ public class Main {
         for(Etablissement etab : listE){
             System.out.println(etab.getNom()+" type : "+etab.getCommune());
         }*/
+
+        //ProduitDAO produitDAO= new ProduitDAO(conn);
+        AppInterfacePanier panier = new AppRequestPanier();
+        ArrayList<Produit> listProd = new ArrayList<>();
+        
+       listProd=  panier.getProduct(1186);
+
+       for(Produit prod : listProd){
+        System.out.println(prod.getIdEtablissement()+" idfestivalier : "+prod.getIdFestivalier());
+        }
+
     }
+
 
 }

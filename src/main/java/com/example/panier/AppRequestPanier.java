@@ -15,6 +15,7 @@ public class AppRequestPanier implements AppInterfacePanier{
     public boolean addProduct(Integer idFestivalier, Produit produit){
       conn = TheConnection.getInstance();
       DAO<Produit> produitDAO = new ProduitDAO(conn);
+      produit.setIdFestivalier(idFestivalier);
       produitDAO.create(produit);
       return true;
     }

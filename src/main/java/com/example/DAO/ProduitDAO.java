@@ -128,7 +128,7 @@ public class ProduitDAO extends DAO<Produit> {
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				Produit produit = new Produit();
-				produit.setIdProduit(rs.getInt("idfestivalier"));
+				produit.setIdFestivalier(rs.getInt("idFestivalier"));
 				produit.setIdEtablissement(rs.getInt("idEtablissement"));
 				produit.setIdFestival(rs.getInt("idFestival"));
 				produit.setNbPass(rs.getInt("nbPass"));
