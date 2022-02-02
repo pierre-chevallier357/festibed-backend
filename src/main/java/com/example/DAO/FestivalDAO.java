@@ -71,7 +71,6 @@ public class FestivalDAO extends DAO<Festival> {
 						
 					System.out.println("capacite :"+i+" NbplaceReserver :"+j );
 						if(j>=i){
-							rs.next();
 						}
 						else {
 							festival = ToolsFestival.readFestival(rs);
@@ -269,7 +268,6 @@ public class FestivalDAO extends DAO<Festival> {
 				if(i != 0 && j  != 0){
 					System.out.println("capacite :"+i+" NbplaceReserver :"+j );
 					if(j>=i){
-						rs.next();
 					}
 					else {
 						festivalList.add(ToolsFestival.readFestivalInformation(rs));
