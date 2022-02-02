@@ -212,7 +212,4 @@ public class FestivalierDAO extends DAO<Festivalier> {
 		
 		return res;
 	}
-
-
-    
 }

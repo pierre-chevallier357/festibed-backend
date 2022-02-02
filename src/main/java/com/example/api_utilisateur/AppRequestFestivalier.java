@@ -91,6 +91,7 @@ public class AppRequestFestivalier implements AppInterfaceUser {
         DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);   
         ((FestivalierDAO) festivalierDAO).deleteUser(id);
         
+        
     }
     
 }
