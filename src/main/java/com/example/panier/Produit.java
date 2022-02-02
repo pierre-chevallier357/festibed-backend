@@ -1,7 +1,5 @@
 package com.example.panier;
 
-import com.example.Tools;
-
 public class Produit {
     Integer idFestivalier;
     Integer idFestival;
