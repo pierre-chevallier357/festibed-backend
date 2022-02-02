@@ -23,23 +23,24 @@ public class ProduitDAO extends DAO<Produit> {
 		int ins = 0;
 
 		try {
-            PreparedStatement prepare = this.connect.prepareStatement(
-                "insert into Panier(idFestivalier, idEtablissement, idFestival, nbPass, HEUREDERNIEREMODIF)"+
-					"values(?,?,?,?,?)"
-                );
-        
-            prepare.setInt(1, obj.getIdFestivalier());
-            prepare.setInt(2, obj.getIdEtablissement());
-            prepare.setInt(3, obj.getIdFestival());
-            prepare.setInt(4, obj.getNbPass());
-			Date time = new Date();
+			for (int i = 1; i <= obj.getNbPass(); i++){
+				PreparedStatement prepare = this.connect.prepareStatement(
+					"insert into Panier(idFestivalier, idEtablissement, idFestival, nbPass, HEUREDERNIEREMODIF)"+
+						"values(?,?,?,?,?)"
+					);
+			
+				prepare.setInt(1, obj.getIdFestivalier());
+				prepare.setInt(2, obj.getIdEtablissement());
+				prepare.setInt(3, obj.getIdFestival());
+				prepare.setInt(4, 1);
+				Date time = new Date();
 
-			DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
-			prepare.setString(5, shortDateFormat.format(time));
-            
+				DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+				prepare.setString(5, shortDateFormat.format(time));
+				
 
-            ins = prepare.executeUpdate();
-
+				ins = prepare.executeUpdate();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
         }

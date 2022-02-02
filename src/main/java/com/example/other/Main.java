@@ -122,14 +122,14 @@ public class Main {
 			e.printStackTrace();
 		}
         
-
+*/
         AppInterfacePanier panier = new AppRequestPanier();
 
         Produit produit = new Produit();
         int idFestivalier = 1;
         produit.createIdProduit();
         produit.setIdEtablissement(1);
-        produit.setIdFestival(124);
+        produit.setIdFestival(1186);
         produit.setIdFestivalier(1);
         produit.setNbPass(1);
         panier.addProduct(idFestivalier, produit);
@@ -163,7 +163,7 @@ public class Main {
         listE =  etabDAO.searchEtablissement(2, nom, type, ville);
         for(Etablissement etab : listE){
             System.out.println(etab.getNom()+" type : "+etab.getCommune());
-        }*/
+        }
 
         //ProduitDAO produitDAO= new ProduitDAO(conn);
         AppInterfacePanier panier = new AppRequestPanier();
@@ -174,7 +174,7 @@ public class Main {
        for(Produit prod : listProd){
         System.out.println(prod.getIdEtablissement()+" idfestivalier : "+prod.getIdFestivalier());
         }
-
+*/
     }
 
 

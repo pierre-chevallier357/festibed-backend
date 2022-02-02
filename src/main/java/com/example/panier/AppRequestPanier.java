@@ -13,11 +13,14 @@ public class AppRequestPanier implements AppInterfacePanier{
 
     @Override
     public boolean addProduct(Integer idFestivalier, Produit produit){
+      boolean res = true;
       conn = TheConnection.getInstance();
       DAO<Produit> produitDAO = new ProduitDAO(conn);
       produit.setIdFestivalier(idFestivalier);
-      produitDAO.create(produit);
-      return true;
+      if(!produitDAO.create(produit)){
+        res = false;
+      }
+      return res;
     }
 
     @Override
