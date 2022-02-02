@@ -182,6 +182,15 @@ public class ProduitDAO extends DAO<Produit> {
 		return del > 0;
 	}
 
-
+	public boolean moveToReservation(int idFestivalier) {
+		int ins = 0;
+		try {
+			PreparedStatement prepare = this.connect.prepareStatement("insert into Panier(idFestivalier, idEtablissement, idFestival, nbPass) values (SELECT idFestivalier, idEtablissement, idFestival, nbPass FROM Panier WHERE IdFestivalier="+idFestivalier+")");
+			ins = prepare.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+        }
+		return ins>0;
+	}
 	
 }

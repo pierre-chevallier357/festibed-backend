@@ -44,5 +44,8 @@ public class RunPanier {
       return ((AppRequestPanier) requestPanier).delete(idFestivalier);
     }
 
-    
+    @GetMapping("/reservation/{idFestivalier}")
+    public boolean moveToReservation(@PathVariable(value = "idFestivalier") Integer idFestivalier) {
+      return ((AppRequestPanier) requestPanier).moveToReservation(idFestivalier);
+    }
 }

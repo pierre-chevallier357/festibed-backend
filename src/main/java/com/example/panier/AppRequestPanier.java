@@ -55,5 +55,11 @@ public class AppRequestPanier implements AppInterfacePanier{
 
     }
 
-    
+ public boolean moveToReservation(Integer idFestivalier){
+
+    conn = TheConnection.getInstance();
+    DAO<Produit> produitDAO = new ProduitDAO(conn);
+    return ((ProduitDAO) produitDAO).moveToReservation(idFestivalier);
+
+ }   
 }

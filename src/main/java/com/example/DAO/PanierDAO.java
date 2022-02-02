@@ -48,7 +48,7 @@ public class PanierDAO extends DAO<Panier> {
 	public Panier read(int id) {	
 			Statement myStm;
 			 
-			Panier panier = new Panier();;
+			Panier panier = new Panier();
 			Produit produit;
 			try {
 				String q = 	"SELECT * FROM Panier " +
