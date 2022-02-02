@@ -32,7 +32,7 @@ public class RunPanier {
 
     @GetMapping("/get-panier/{idFestivalier}")
     public ArrayList<Produit> getPanier(@PathVariable(value = "idFestivalier") Integer idFestivalier) {
-      return requestPanier.getProduct(idFestivalier);
+      return requestPanier.getPanier(idFestivalier).getProductInPanier();
     }
     
 }
