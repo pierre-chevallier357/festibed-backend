@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,7 @@ public class RunPanier {
     static Connection conn;
     AppInterfacePanier requestPanier = new AppRequestPanier();
 
-    @GetMapping("/add-product/{idFestivalier}&{product}")
+    @PostMapping("/add-product/{idFestivalier}&{product}")
     public boolean addProduct(@PathVariable(value = "idFestivalier") Integer idFestivalier, @PathVariable(value = "product") Produit produit) {
       boolean res = true;
       System.out.println(produit.getIdFestivalier()+ "-----"+ produit.getIdEtablissement());
