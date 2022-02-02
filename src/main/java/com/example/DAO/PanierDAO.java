@@ -167,7 +167,6 @@ public class PanierDAO extends DAO<Panier> {
 
 	public Panier readReservation(int id) {	
 		Statement myStm;
-		 
 		Panier panier = new Panier();
 		Produit produit;
 		try {

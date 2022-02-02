@@ -42,10 +42,6 @@ public class TheConnection {
 
 		if (connect == null) {
 			new TheConnection();
-			System.out.println("Instanciation de la connexion SQL !\n");
-		} else {
-			System.out.println("Connexion SQL existante !");
-
 		}
 		return connect;
 	}
