@@ -178,7 +178,6 @@ public class EtablissementDAO extends DAO<Etablissement> {
 				q += " TYPE = '"+type+"'";
 			}
 
-			System.out.println(q);
 			ResultSet rs = myStm.executeQuery(q);
 			while(rs.next()) {
 				etabList.add(ToolsEtab.getAllInfo(rs));

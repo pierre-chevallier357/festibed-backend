@@ -25,7 +25,6 @@ public class RunPanier {
     @GetMapping("/add-product/{idFestivalier}&{idFestival}&{idEtab}&{nbPass}")
     public boolean addProduct(@PathVariable(value = "idFestivalier") Integer idFestivalier, @PathVariable(value = "idFestival") Integer idFestival, @PathVariable(value = "idEtab") Integer idEtab, @PathVariable(value = "nbPass") int nbPass) {
       boolean res = true;
-      System.out.println(idFestivalier+ "-----"+ idEtab);
       res = requestPanier.addProduct(idFestivalier, idFestival, idEtab, nbPass);
       return res;
     }
