@@ -40,5 +40,9 @@ public class RunFestival {
       return requestFestival.getListOfHundredFestival();
     }
 
+    @GetMapping("/get-festival/{idFestival}")
+    public Festival getIdFestival(@PathVariable(value = "idFestival") Integer idFestival) {
+      return ((AppRequestFestival) requestFestival).getFestivalById(idFestival);
+    }
     
 }

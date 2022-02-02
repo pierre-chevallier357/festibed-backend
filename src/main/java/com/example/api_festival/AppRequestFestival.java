@@ -51,4 +51,11 @@ public class AppRequestFestival implements AppInterfaceFestival{
         return list;
     }
 
+
+    public Festival getFestivalById(Integer id){
+        conn = TheConnection.getInstance();
+        DAO<Festival> festivalDAO = new FestivalDAO(conn);       
+        return festivalDAO.read(id);
+
+    }
 }

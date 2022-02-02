@@ -55,6 +55,15 @@ public class AppRequestEtablissement implements AppInterfaceEtablissement{
         
     }
 
+    public Etablissement getEtabById(Integer idEtab){
+
+        conn = TheConnection.getInstance();
+
+        DAO<Etablissement> etablissementDAO = new EtablissementDAO(conn);
+
+        return etablissementDAO.read(idEtab);
+		
+	}
 
     
 }

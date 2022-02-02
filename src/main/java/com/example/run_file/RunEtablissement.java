@@ -28,4 +28,10 @@ public class RunEtablissement {
       return requestEtab.getListOfEtablissement(idFestival, nom, type, ville);
     }
 
+    @GetMapping("/get-etablissement/{idEtab}")
+    public Etablissement getIdEtab(@PathVariable(value = "idEtab") Integer idEtab) {
+      return ((AppRequestEtablissement) requestEtab).getEtabById(idEtab);
+    }
+
+
 }
