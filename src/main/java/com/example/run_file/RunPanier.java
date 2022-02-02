@@ -34,5 +34,11 @@ public class RunPanier {
     public ArrayList<Produit> getPanier(@PathVariable(value = "idFestivalier") Integer idFestivalier) {
       return requestPanier.getPanier(idFestivalier).getProductInPanier();
     }
+
+    @GetMapping("/delete-panier/{idFestivalier}&{idFestival}&{idEtab}")
+    public boolean deletePanier(@PathVariable(value = "idFestivalier") Integer idFestivalier, @PathVariable(value = "idFestival") Integer idFestival, @PathVariable(value = "idEtab") Integer idEtab) {
+      return ((AppRequestPanier) requestPanier).deleteInPanier(idFestivalier, idFestival, idEtab);
+    }
+
     
 }

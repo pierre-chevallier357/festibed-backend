@@ -41,5 +41,12 @@ public class AppRequestPanier implements AppInterfacePanier{
       return panierDAO.read(idFestivalier);
     }
 
+    public boolean deleteInPanier(Integer idFestivalier, Integer idFestival, Integer idEtab){
+      conn = TheConnection.getInstance();
+      DAO<Produit> produitDAO = new ProduitDAO(conn);
+      return ((ProduitDAO) produitDAO).deleteProduct(idFestivalier, idFestival, idEtab);
+
+    }
+
     
 }

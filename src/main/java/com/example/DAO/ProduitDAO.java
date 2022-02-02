@@ -145,6 +145,25 @@ public class ProduitDAO extends DAO<Produit> {
 		}
 		return produitList;
 	}
+	
+
+
+	public boolean deleteProduct(Integer idFestivalier, Integer idFestival, Integer idEtab) {
+		
+		int del = 0;
+		
+		try {
+			Statement myStm = this.connect.createStatement();
+			String supFesti = "delete from Produit where IDFestivalier="+idFestivalier+" AND idFestival = "+idFestival+" AND idEtablissement ="+idEtab;
+			del = myStm.executeUpdate(supFesti);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return del > 0;
+	}
 
 
 	
