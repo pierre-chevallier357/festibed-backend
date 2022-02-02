@@ -23,7 +23,7 @@ public class RunPanier {
     static Connection conn;
     AppInterfacePanier requestPanier = new AppRequestPanier();
 
-    @PostMapping("/add-product/{idFestivalier}&{idFestival}&{idEtablissment}&{nbPass}")
+    @GetMapping("/add-product/{idFestivalier}&{idFestival}&{idEtablissment}&{nbPass}")
     public boolean addProduct(@PathVariable(value = "idFestivalier") Integer idFestivalier, @PathVariable(value = "idFestival") Integer idFestival, @PathVariable(value = "idEtablissement") Integer idEtablissement, @PathVariable(value = "nbPass") int nbPass) {
       boolean res = true;
       System.out.println(idFestivalier+ "-----"+ idEtablissement);
