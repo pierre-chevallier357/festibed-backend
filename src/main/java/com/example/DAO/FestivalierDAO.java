@@ -195,5 +195,24 @@ public class FestivalierDAO extends DAO<Festivalier> {
 	}
 
 
+	public boolean deleteUser(Integer id) {
+		
+		boolean res = true; 
+		
+		try {
+			Statement myStm = this.connect.createStatement();
+			String supAdresse = "delete from Festivalier where IDFestivalier="+id;
+			myStm.executeUpdate(supAdresse);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			res = false;
+		}
+		
+		return res;
+	}
+
+
     
 }

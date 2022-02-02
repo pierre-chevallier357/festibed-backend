@@ -17,5 +17,6 @@ public interface AppInterfaceUser {
     public ArrayList<Utilisateur> getListOfUser();
 
     public Integer connection(String email, String password);
+
     
 }

@@ -145,25 +145,25 @@ public class Main {
     int id = ((AppRequestFestivalier) userReq).createTempUser();
     System.out.println(id);     
 
-
+*/
     DAO<Festival> festivalDAO = new FestivalDAO(conn);
-    String nom ="null",  ville="BEAUMONT DE PERTUIS",  type="null",  departement="null",  mois="null";
+    String nom ="LÉZART VERT",  ville="null",  type="null",  departement="null",  mois="null";
 
         ArrayList<Festival> listF = new ArrayList<>();
 
         listF =  ((FestivalDAO) festivalDAO).searchFestivals( nom,  ville,  type,  departement,  mois);
         for(Festival fes : listF){
             System.out.println(fes.getNom()+" type : "+fes.getDepartement());
-        }*/
+        }
 
-
+/*
         EtablissementDAO etabDAO = new EtablissementDAO(conn);
-        String nom ="null",  ville="REIMS",  type="HOTEL";
+        String nom ="null",  ville="MARSEILLE",  type="HOTEL";
         ArrayList<Etablissement> listE = new ArrayList<>();
         listE =  etabDAO.searchEtablissement(2, nom, type, ville);
         for(Etablissement etab : listE){
             System.out.println(etab.getNom()+" type : "+etab.getCommune());
-        }
+        }*/
     }
 
 }

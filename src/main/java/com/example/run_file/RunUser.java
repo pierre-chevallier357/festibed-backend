@@ -69,5 +69,13 @@ public class RunUser {
       requestUser.updateUser(id, nom, email);   
       return id;
     }
+
+    @GetMapping("/delete-Festivalier/{idFestivalier}")
+    Integer deleteFestivalier(@PathVariable(value = "idFestivalier") Integer id) {
+      requestUser = new AppRequestFestivalier();
+
+      ((AppRequestFestivalier) requestUser).deleteUser(id);   
+      return id;
+    }
     
 }

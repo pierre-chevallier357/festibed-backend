@@ -86,5 +86,11 @@ public class AppRequestFestivalier implements AppInterfaceUser {
     public static <T> ArrayList<Utilisateur> cast(ArrayList<T> list) {
         return (ArrayList<Utilisateur>) list;
     }
+
+    public void deleteUser(Integer id) {
+        DAO<Festivalier> festivalierDAO = new FestivalierDAO(conn);   
+        ((FestivalierDAO) festivalierDAO).deleteUser(id);
+        
+    }
     
 }
