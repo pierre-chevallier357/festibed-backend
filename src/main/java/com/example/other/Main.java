@@ -132,7 +132,7 @@ public class Main {
         produit.setIdFestival(1186);
         produit.setIdFestivalier(1);
         produit.setNbPass(1);
-        panier.addProduct(idFestivalier, produit);
+        //panier.addProduct(idFestivalier, produit);
 
         ArrayList<Produit> produitList = panier.getProduct(idFestivalier);
         for (Produit prod : produitList){
