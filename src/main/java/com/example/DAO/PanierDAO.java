@@ -163,4 +163,35 @@ public class PanierDAO extends DAO<Panier> {
 		}
 		return ins > 0;
 	}
+
+
+	public Panier readReservation(int id) {	
+		Statement myStm;
+		 
+		Panier panier = new Panier();
+		Produit produit;
+		try {
+			String q = 	"SELECT * FROM Reservation " +
+					"WHERE IDFestivalier="+id;
+			myStm = this.connect.createStatement(this.type,this.mode);
+			
+			ResultSet rs = myStm.executeQuery(q);
+			while(rs.next()) {
+				produit = new Produit();
+				produit.setIdFestivalier(rs.getInt("idFestivalier"));
+				produit.setIdFestival(rs.getInt("idFestival"));
+				produit.setIdEtablissement(rs.getInt("idEtablissement"));
+				produit.setNbPass(rs.getInt("nbPass"));
+				panier.addProduct(produit);
+			}
+			
+		}
+			
+		catch (SQLException e) {
+			e.printStackTrace();
+			panier = new Panier();
+			
+		}
+		return panier;
+	}
 }

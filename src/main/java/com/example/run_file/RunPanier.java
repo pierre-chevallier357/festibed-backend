@@ -48,4 +48,9 @@ public class RunPanier {
     public boolean moveToReservation(@PathVariable(value = "idFestivalier") Integer idFestivalier) {
       return ((AppRequestPanier) requestPanier).moveToReservation(idFestivalier);
     }
+
+    @GetMapping("/get-reservation/{idFestivalier}")
+    public ArrayList<Produit> getReservation(@PathVariable(value = "idFestivalier") Integer idFestivalier) {
+      return ((AppRequestPanier) requestPanier).getReservation(idFestivalier).getProductInPanier();
+    }
 }
