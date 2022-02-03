@@ -37,7 +37,7 @@ public class ProduitDAO extends DAO<Produit> {
 
 				DateFormat shortDateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
 				prepare.setString(5, shortDateFormat.format(time));
-				
+				System.out.println("--------------------");
 
 				ins = prepare.executeUpdate();
 			}
