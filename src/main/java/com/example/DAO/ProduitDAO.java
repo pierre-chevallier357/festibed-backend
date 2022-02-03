@@ -21,9 +21,9 @@ public class ProduitDAO extends DAO<Produit> {
 	public boolean create(Produit obj) {
 		
 		int ins = 0;
-
+		int i = 0;
 		try {
-			for (int i = 0; i < obj.getNbPass(); i++){
+			for (i =0 ; i < obj.getNbPass(); i++){
 				PreparedStatement prepare = this.connect.prepareStatement(
 					"insert into Panier(idFestivalier, idEtablissement, idFestival, nbPass, HEUREDERNIEREMODIF)"+
 						"values(?,?,?,?,?)"
