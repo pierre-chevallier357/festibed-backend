@@ -21,7 +21,6 @@ public class AppRequestPanier implements AppInterfacePanier{
       produit.setIdFestival(idFestival);
       produit.setNbPass(nbPass);
       DAO<Produit> produitDAO = new ProduitDAO(conn);
-      produit.setIdFestivalier(idFestivalier);
       if(!produitDAO.create(produit)){
         res = false;
       }

@@ -23,7 +23,7 @@ public class ProduitDAO extends DAO<Produit> {
 		int ins = 0;
 
 		try {
-			for (int i = 1; i <= obj.getNbPass(); i++){
+			for (int i = 1; i < obj.getNbPass(); i++){
 				PreparedStatement prepare = this.connect.prepareStatement(
 					"insert into Panier(idFestivalier, idEtablissement, idFestival, nbPass, HEUREDERNIEREMODIF)"+
 						"values(?,?,?,?,?)"

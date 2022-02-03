@@ -10,13 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @SpringBootApplication
 public class RestServer {
-
-    @RequestMapping(
-        value = "/hello", 
-        method = RequestMethod.GET,
-        produces = "application/json")
-    @ResponseBody
-
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(RestServer.class);
         app.setDefaultProperties(Collections.singletonMap("server.port", "4200"));
