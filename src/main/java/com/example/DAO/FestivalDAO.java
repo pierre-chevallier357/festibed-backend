@@ -266,4 +266,29 @@ public class FestivalDAO extends DAO<Festival> {
 		return festivalList;
 	
 	}
+
+
+
+	public Festival readInPanier(int id) {	
+			Statement myStm;
+			 
+			Festival festival = null;
+			
+			try {
+				String q = 	"SELECT * FROM Festival " +
+						"WHERE IDFestival="+id;
+				myStm = this.connect.createStatement(this.type,this.mode);
+				
+				ResultSet rs = myStm.executeQuery(q);
+				while(rs.next()) {
+					festival = ToolsFestival.readFestival(rs);
+				}
+				
+			}
+				
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return festival;
+	}
 }
